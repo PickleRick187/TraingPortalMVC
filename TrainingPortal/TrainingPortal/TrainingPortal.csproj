@@ -97,16 +97,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="Models\TrainingPortalModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>TrainingPortalModel.Context.cs</LastGenOutput>
-      <DependentUpon>TrainingPortalModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\TrainingPortalModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TrainingPortalModel.edmx</DependentUpon>
-      <LastGenOutput>TrainingPortalModel.cs</LastGenOutput>
-    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -114,57 +104,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Catalog.cs">
-      <DependentUpon>TrainingPortalModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Course.cs">
-      <DependentUpon>TrainingPortalModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Enrollment.cs">
-      <DependentUpon>TrainingPortalModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Extended\Student.cs" />
-    <Compile Include="Models\Lecturer.cs">
-      <DependentUpon>TrainingPortalModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PaymentType.cs">
-      <DependentUpon>TrainingPortalModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Student.cs">
-      <DependentUpon>TrainingPortalModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Training.cs">
-      <DependentUpon>TrainingPortalModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TrainingPortalModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TrainingPortalModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TrainingPortalModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TrainingPortalModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TrainingPortalModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TrainingPortalModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TrainingType.cs">
-      <DependentUpon>TrainingPortalModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
-    <EntityDeploy Include="Models\TrainingPortalModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>TrainingPortalModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\TrainingPortalModel.edmx.diagram">
-      <DependentUpon>TrainingPortalModel.edmx</DependentUpon>
-    </Content>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
