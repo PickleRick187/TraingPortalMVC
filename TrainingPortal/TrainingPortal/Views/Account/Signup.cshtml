@@ -1,0 +1,199 @@
+﻿@model TrainingPortal.Models.Student
+
+@{
+    ViewBag.Title = "Registration";
+    Layout = "~/Views/Shared/_SignInSignUp.cshtml";
+
+}
+
+
+@if (ViewBag.Status != null && Convert.ToBoolean(ViewBag.Status))
+{
+    if (ViewBag.Message != null)
+    {
+        <div style="margin: 100px;" class="alert alert-success">
+            <strong>Success! </strong>@ViewBag.Message
+        </div>
+
+
+        @Html.ActionLink("Portal", "UserHome", "Portal", new { id = Model.StudentID }, null)
+    }
+}
+else
+{
+
+    using (Html.BeginForm("Signin", "Account", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="login-wrap">
+ 
+            <div class="sign-up-htm" id="">
+                <div style=" margin: 5% auto  0px auto; width: 55%;">
+        
+                    <h4 style="color: white" align="center">Create Your Student Account</h4>
+                    <hr color="#ff3547">
+
+                    <div class="googleSignInButton" style="text-align: center">
+                        <button style=" font-weight: bold;background:white; color:white; " type="submit" class="btn btn-danger">SIGN UP WITH GOOGLE</button>
+                    </div>
+                    <br>
+                    <div class="facebookSignInButton" style="text-align: center"><button style=" font-weight: bold; background:white; color:white;" type="submit" class="btn btn-danger">SIGN UP WITH FACEBOOK</button></div>
+                    <br>
+                    <h4 style="text-align: center">OR</h4>
+                    <hr color="#ff3547">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+          
+                    
+                    <div class="form-row">
+
+                        <div class="form-group col-md-6">
+                            @Html.EditorFor(model => model.StudentFirstName, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "First Name" } })
+                            @Html.ValidationMessageFor(model => model.StudentFirstName, "", new { @class = "text-danger" })
+                        </div>
+
+
+
+                        <div class="form-group col-md-6">
+                            @Html.EditorFor(model => model.StudentLastName, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Last Name" } })
+                            @Html.ValidationMessageFor(model => model.StudentLastName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.StudentEmail, new { htmlAttributes = new { @class = "form-control", @id = "form-control", PlaceHolder = "Email" } })
+                        @Html.ValidationMessageFor(model => model.StudentEmail, "", new { @class = "text-danger" })
+                        @Html.ValidationMessage("EmailExist", new { @class = "text-danger" })
+
+                    </div>
+
+          
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            @Html.EditorFor(model => model.StudentPassword, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Password" } })
+                            @Html.ValidationMessageFor(model => model.StudentPassword, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Confirm Password" } })
+                            @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    
+                    
+                    
+
+                    <p style="text-align: center; color: white">By clicking, you agree to our <span style="color: aquamarine">Terms Of Use</span> and our <span style="color: aquamarine">Privacy Policy</span></p>
+
+
+                    <div style="text-align: center"><button style="background:#ff3547 " type="submit" class="btn btn-danger">SIGN UP</button></div>
+                    
+                    <div style="text-align: center">
+                        @Html.ActionLink("Signin instead?", "Signin", "Account")
+                    </div>
+            </div>
+        
+        </div>
+        </div>
+        if (ViewBag.Message != null)
+        {
+            <div class="alert alert-danger">
+                <strong>Error! </strong>@ViewBag.Message
+            </div>
+        }
+    }
+
+}
+
+
+
+@section Scripts{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}
+
+
+
+
+
+
+@*@using (Html.BeginForm("SignUp", "UserAccount", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+
+    <div class="sign-up-htm" id="show-SignUp">
+        <div style=" margin: -115% auto -89px 76%; width: 75%;">
+
+            <h4 style="color: white" align="center">Create Your Student Account</h4>
+            <hr color="#ff3547">
+
+            <div class="googleSignInButton" style="text-align: center">
+                <button style=" font-weight: bold;background:white; color:white; " type="submit" class="btn btn-danger">SIGN UP WITH GOOGLE</button>
+            </div>
+            <br>
+            <div class="facebookSignInButton" style="text-align: center"><button style=" font-weight: bold; background:white; color:white;" type="submit" class="btn btn-danger">SIGN UP WITH FACEBOOK</button></div>
+            <br>
+            <h4 style="text-align: center">OR</h4>
+            <hr color="#ff3547">
+
+            <div class="form-row">
+
+                <div class="form-group col-md-6">
+                    @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "First Name" } })
+                    @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                </div>
+
+
+
+                <div class="form-group col-md-6">
+                    @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Last Name" } })
+                    @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @id = "form-control", PlaceHolder = "Email" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Password" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group col-md-6">
+                    @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Confirm Password" } })
+                    @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <p style="text-align: center; color: white">By clicking, you agree to our <span style="color: aquamarine">Terms Of Use</span> and our <span style="color: aquamarine">Privacy Policy</span></p>
+
+
+            <div style="text-align: center"><button style="background:#ff3547 " type="submit" class="btn btn-danger">SIGN UP</button></div>
+
+
+
+
+
+
+            <!-- Optional JavaScript -->
+            <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+        </div>
+
+    </div>
+
+
+
+}*@

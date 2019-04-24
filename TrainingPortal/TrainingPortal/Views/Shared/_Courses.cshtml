@@ -1,0 +1,52 @@
+﻿@model IEnumerable<TrainingPortal.Models.Course>
+
+<!--slide show-->
+<h2 style="margin-top: 16px; ">Recent Courses</h2>
+<div class="slide-row">
+<!-- /.col-lg-3 -->
+<div class="slide-col-lg-9">
+
+    <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
+        <ol class="carousel-indicators new">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+
+
+        <div class="carousel-inner" role="listbox">
+            <div class="carousel-item active">
+                <!--First Slide-->
+                <div class="row">
+
+                    @foreach (var item in Model)
+                    {
+
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="card h-100 ">
+
+                                <div class="card-body">
+                                    @if (item.PhotoFile != null)
+                                    {
+                                        <a href="#"><img class="card-img-top" src=@Url.Action("GetImage", "User", new { id = item.CourseID }) /></a>
+                                    }
+
+                                    <h5>@item.CourseName</h5>
+                                    <p>@item.CourseDescription</p>
+                                    <p> @item.CoursePrice</p>
+
+                                    @Html.ActionLink("Details", "_CourseDetails", new { id = item.CourseID }, null)
+                                </div>
+                                <div class="card-footer">
+                                    <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>

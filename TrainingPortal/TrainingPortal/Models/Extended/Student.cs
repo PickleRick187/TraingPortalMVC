@@ -4,18 +4,17 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-
 namespace TrainingPortal.Models
 {
     [MetadataType(typeof(StudentMetaData))]
     public partial class Student
     {
         public string ConfirmPassword { get; set; }
+
     }
 
     public class StudentMetaData
     {
-
 
         public StudentMetaData()
         {
@@ -50,5 +49,9 @@ namespace TrainingPortal.Models
 
 
         public virtual ICollection<Enrollment> Enrollments { get; set; }
+
     }
+
+
+
 }

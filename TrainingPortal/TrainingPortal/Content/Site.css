@@ -1,0 +1,327 @@
+﻿
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background-color: #0D1218;
+    color: white;
+    font-family: KaushanScript-Regular;
+    width: 1500px;
+   
+    
+}
+
+/* Set padding to keep content from hitting the edges */
+
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+
+.course {
+    padding: 50px;
+}
+.dropdown{
+    margin-left: 24%;
+ 
+}
+    .dropdown > .btn {
+        height: 30px;
+    }
+
+.active-pink-2{
+    margin-left: 1%;
+}
+.active-pink-2 input[type=text]:focus:not([readonly]) {
+    border-bottom: 0px solid #f48fb1;
+    border-top: 0px solid;
+    
+}
+.active-pink input[type=text] {
+    border-bottom: 1px solid #f48fb1;
+    box-shadow: 0 1px 0 0 #f48fb1;
+}
+.active-purple-2 input[type=text]:focus:not([readonly]) {
+    border-bottom: 1px solid #ce93d8;
+    box-shadow: 0 1px 0 0 #ce93d8;
+}
+.active-purple input[type=text] {
+    border-bottom: 1px solid #ce93d8;
+    box-shadow: 0 1px 0 0 #ce93d8;
+}
+.active-cyan-2 input[type=text]:focus:not([readonly]) {
+    border-bottom: 1px solid #4dd0e1;
+    box-shadow: 0 1px 0 0 #4dd0e1;
+}
+.active-cyan input[type=text] {
+    border-bottom: 1px solid #4dd0e1;
+    box-shadow: 0 1px 0 0 #4dd0e1;
+}
+/*Nav Bar*/
+nav#mainNav {
+    box-shadow: 3px 2px 18px 1px #000000b3;
+    height:80px;
+}
+/*Home Page*/
+#Home-page {
+    margin: 40px -17% auto;
+    background-image: url('Images/LearnerHomePage/Office-Day@2x.png');
+    background-repeat: no-repeat;
+    width: 133.6%;
+    height: 560px;
+    background-size: 100%;
+    text-shadow: 3px 1px 11px black;
+}
+
+
+.Home-new  {
+  
+    display: none;
+}
+
+.Home-carousel-indicators li {
+        box-sizing: content-box;
+        -ms-flex: 0 1 auto;
+        flex: 0 1 auto;
+        width: 30px;
+        height: 3px;
+        margin-right: 13px;
+        margin-left: 2px;
+        text-indent: -999px;
+        cursor:pointer;
+        background-clip: padding-box;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        opacity: .5;
+        transition: opacity 0.6s ease;
+       display: none;
+       
+    }
+
+@media (prefers-reduced-motion: reduce) {
+    .Home-carousel-indicators li {
+        transition: none;
+    }
+}
+
+.Home-carousel-indicators .active {
+    opacity: 1;
+}
+
+.carousel-caption {
+    position: absolute;
+    right: 15%;
+    bottom: 20px;
+    left: 15%;
+    z-index: 10;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #fff;
+    text-align: center;
+}
+
+
+
+.Home-control-prev, .Home-control-next {
+    position: absolute;
+    top: 260px;
+    bottom: 0;
+    z-index: 1;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    width: 4%;
+    color: #fff;
+    text-align: center;
+    opacity: 0.5;
+    transition: opacity 0.15s ease;
+    height: 290px;
+    left: 1458px;
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+    .Home-control-prev,
+    .Home-control-next {
+        transition: none;
+    }
+}
+
+.Home-control-prev:hover, .carousel-control-prev:focus,
+.Home-control-next:hover,
+.Home-control-next:focus {
+    color: #fff;
+    text-decoration: none;
+    outline: 0;
+    opacity: 0.9;
+}
+
+.Home-control-prev {
+    left:0%;
+}
+
+.Home-control-next {
+    z-index: 2;
+    right: 0;
+}
+
+
+@font-face {
+    font-family: 'Aclonica-Regular';
+    src: url('fonts/Aclonica-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'BerkshireSwash-Regular';
+    src: url('fonts/BerkshireSwash-Regular.ttf') format('truetype');
+}
+
+.home-section{
+    margin-top: 50px;
+}
+
+#Home-Title {
+    position: relative;
+    text-align: center;
+    /*text-shadow: 5px 5px 7px #1000ff;
+    color: #ffefef;*/
+    font-family: FrederickatheGreat-Regular;
+    text-shadow: 20px #131d29;
+    font-size: 3.9em;
+    text-shadow: 0 0 20px black;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.45)
+}
+
+@font-face {
+    font-family: 'GreatVibes-Regular';
+    src: url('fonts/GreatVibes-Regular.ttf') format('truetype');
+}
+
+#home-text {
+    position: relative;
+    text-align: center;
+    /*text-shadow: 5px 5px 7px #1000ff;
+    color: #ffefef;*/
+    font-family: GreatVibes-Regular;
+    text-shadow: 20px #131d29;
+    font-size: 1.9em;
+    text-shadow: 0 0 20px black;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.45)
+}
+
+@font-face {
+    font-family: 'CabinSketch-Bold';
+    src: url('fonts/CabinSketch-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'FrederickatheGreat-Regular';
+    src: url('fonts/FrederickatheGreat-Regular.ttf') format('truetype');
+}
+
+.home-section > p{
+    text-align: center;
+    text-shadow: 5px 5px 7px #1000ff;
+    color: #ffefef;
+}
+
+.home-section > button{
+    position: absolute;
+    left: 44%;
+    width: 10%;
+}
+
+.home-back>p{
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+
+.home-back {
+    top: 5px;
+    right: 15.9%;
+    width: 133.4%;
+    height: 599px;
+    border-style: solid;
+    border-width: 1px;
+    }
+
+
+#black-box {
+    position: relative;
+    background-color: black;
+    width: 133.4%;
+    height: 85px;
+    top: 5px;
+    right: 14.6%;
+    padding: 20px 0 20px 5%;
+}
+
+    #black-box > p {
+        padding-left: 6%;
+    }
+
+.row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+
+
+.carousel-item > img {
+    width: 167.2%;
+    height: 599px;
+}
+
+
+/*Courses Cards*/
+.h-100 {
+    height: 200px !important;
+}
+
+.card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #131d29;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+}
+
+
+.carousel-inner > h2 {
+    text-align: left;
+    padding-top: 90px;
+    
+}
+
+.courses {
+    margin: 0px 150px;
+}
+
+

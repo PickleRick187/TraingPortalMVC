@@ -1,0 +1,93 @@
+﻿@model TrainingPortal.Models.Student
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - EOH Training Portal</title>
+
+    <link href="~/Content/all.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/mdb.min.css" rel="stylesheet" />
+    <link href="~/Content/SignedInHomePage.css" rel="stylesheet" />
+    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    @*@Styles.Render("~/Content/SignedInPage")
+        @Scripts.Render("~/bundles/modernizr")*@
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="signed-nav">
+        <div class="container">
+
+            <div class="navbar-logo ">
+                <img src="~/Content/Images/LearnerEohLogo.png" />
+
+            </div>
+
+            @Html.ActionLink("Training Portal", "Index", "Home", new { area = "" }, new { @class = " nav-font" })
+
+            <div id="Nav-UserName" style="margin-left: 90%;">
+                <p style=" margin-left: 1%; font-size: 1em;">
+                     @HttpContext.Current.User.Identity.Name
+                </p>
+                <img src="~/Content/Images/LearnerHomePage/Symbol 9 – 1.png" />
+            </div>
+            <div class="navbar-text">
+
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    menu
+                </button>
+
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        @*@Html.Partial("_SideNav")*@
+
+
+        @RenderBody()
+        <hr />
+
+    </div>
+    <footer>
+        <div class="content">
+            <div>
+                <h6>CONTACT US</h6>
+                <p>
+                    +27214253430 <br /> EOHMC.INFO@EOH.COM
+                </p>
+            </div>
+
+
+
+            <h6>LOCATION</h6>
+            <p>
+                1st FLoor, Block B Granger Bay, V&A Waterfront Cape Town, 8001
+            </p>
+
+            <h6>SOLUTIONS</h6>
+            <p>
+                Development Digitisation IT Infrastructure Data Analysis Enterprise App
+            </p>
+        </div>
+        <p style="text-align: center;">&copy; @DateTime.Now.Year - EOH Trainer Portal </p>
+    </footer>
+
+
+    @*@Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")*@
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    @RenderSection("Scripts", false)
+</body>
+</html>
+
