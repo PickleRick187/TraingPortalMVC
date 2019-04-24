@@ -13,5 +13,13 @@ namespace TrainingPortal.Controllers
         {
             return View();
         }
+
+
+        public ActionResult Trainging()
+        {
+            return View();
+        }
+
+
     }
 }
