@@ -1,0 +1,73 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>@ViewBag.Title - EOH Training Portal</title>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+<nav class="navbar navbar-expand-lg  fixed-top" id="mainNav">
+    <div class="container">
+
+        <div style="position: fixed;">
+
+            <img class="navbar-brand" src="~/Content/Images/eoh-brand-white-text.png" />
+            @Html.ActionLink("Training Portal", "Index", "Home", new { area = "" }, new { @class = "nav-font" })
+        </div>
+
+         
+
+
+        <div class="navbar-text">
+
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                menu
+            </button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
+                <li>
+                <li class="nav-item">
+                    @Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
+                </li>
+                <li class="nav-item">
+                    @Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
+                </li>
+            </ul>
+
+          
+
+        </div>
+    </div>
+</nav>
+
+
+
+
+<div class="container">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p style="text-align: center;">&copy; @DateTime.Now.Year - EOH Trainer Portal </p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

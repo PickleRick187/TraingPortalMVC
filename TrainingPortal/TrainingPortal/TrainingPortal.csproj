@@ -1,4 +1,5 @@
 ﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -23,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>3.1</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -96,6 +98,40 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Images\Courses\3 csharp-e7b8fcd4ce.png" />
+    <Content Include="Content\Images\Courses\5 jquery-c93ba170c1.png" />
+    <Content Include="Content\Images\Courses\6 nodejs-601628d09d.png" />
+    <Content Include="Content\Images\Courses\7 vue-7945830e6c.js.png" />
+    <Content Include="Content\Images\Courses\8 React.png" />
+    <Content Include="Content\Images\Courses\administration-ee0dacafe8.png" />
+    <Content Include="Content\all.css" />
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\csharp.png" />
+    <Content Include="Content\group-policy-administration-ee0dacafe8.png" />
+    <Content Include="Content\Images\EOH Red Logo.png" />
+    <Content Include="Content\Images\eoh-1078.jpg" />
+    <Content Include="Content\Images\Eoh-Brand Red Background White font.jpg" />
+    <Content Include="Content\Images\Eoh-Brand Red Background.jpg" />
+    <Content Include="Content\Images\Eoh-Brand White Background.jpg" />
+    <Content Include="Content\Images\eoh-brand-white-text.png" />
+    <Content Include="Content\Images\EOHMessage.jpg" />
+    <Content Include="Content\Images\Group 11.png" />
+    <Content Include="Content\Images\LearnerEohLogo.png" />
+    <Content Include="Content\Images\LearnerHomePage\Office-Day%402x.png" />
+    <Content Include="Content\Images\LearnerHomePage\Symbol 9 – 1.png" />
+    <Content Include="Content\Images\SignIn\EOH2.png" />
+    <Content Include="Content\Images\SignIn\EOH_Image01-1080x583.png" />
+    <Content Include="Content\Images\Updatedsyntxicons.png" />
+    <Content Include="Content\mdb.min.css" />
+    <Content Include="Content\SignedInHomePage.css" />
+    <Content Include="Content\SignIn\SignInStyle.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Models\TrainingPortalModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -107,19 +143,55 @@
       <DependentUpon>TrainingPortalModel.edmx</DependentUpon>
       <LastGenOutput>TrainingPortalModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\JavaScript.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AddCourseController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PortalController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -134,10 +206,12 @@
       <DependentUpon>TrainingPortalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Extended\Course.cs" />
+    <Compile Include="Models\Extended\CourseDetails.cs" />
     <Compile Include="Models\Extended\CourseRepository.cs" />
     <Compile Include="Models\Extended\ICourseRepository.cs" />
     <Compile Include="Models\Extended\IStudentRepository.cs" />
     <Compile Include="Models\Extended\Student.cs" />
+    <Compile Include="Models\Extended\StudentLogin.cs" />
     <Compile Include="Models\Extended\StudentRepository.cs" />
     <Compile Include="Models\Extended\TrainingPortalModel.Context.cs" />
     <Compile Include="Models\Lecturer.cs">
@@ -184,6 +258,36 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Shared\_SignedInLayout.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Account\Signup.cshtml" />
+    <Content Include="Views\Account\Signin.cshtml" />
+    <Content Include="Views\Shared\_SignInSignUp.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Portal\Payment.cshtml" />
+    <Content Include="Views\Portal\SelectedCours.cshtml" />
+    <Content Include="Views\Portal\UserDetails.cshtml" />
+    <Content Include="Views\Portal\UserHome.cshtml" />
+    <Content Include="Views\Portal\_PersonalInfo.cshtml" />
+    <Content Include="Views\Portal\_UserName.cshtml" />
+    <Content Include="Views\Shared\Courses.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\SearchedCourse.cshtml" />
+    <Content Include="Views\Shared\SignedInLayout.cshtml" />
+    <Content Include="Views\Shared\SignInSignUp.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Portal\_CourseDetails.cshtml" />
+    <Content Include="Views\Shared\_CourseGallery.cshtml" />
+    <Content Include="Views\Shared\_Courses.cshtml" />
+    <Content Include="Views\Shared\_SideNav.cshtml" />
+    <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Views\AddCourse\CreateCourse.cshtml" />
+    <Content Include="Views\AddCourse\Edit.cshtml" />
+    <Content Include="Views\AddCourse\Course.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -193,16 +297,22 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Account\" />
+    <Folder Include="Content\PersonalInfo\" />
+    <Folder Include="Content\themes\" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ProjectExtensions>

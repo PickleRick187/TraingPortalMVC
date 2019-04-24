@@ -1,0 +1,124 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>@ViewBag.Title - EOH Training Portal</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/mdb.min.css" rel="stylesheet" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    @*@Styles.Render("~/Content/css")*@
+    @*@Scripts.Render("~/bundles/modernizr")*@
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg  fixed-top" id="mainNav">
+        <div class="container">
+
+            <div style="position: fixed;">
+
+                <img class="navbar-brand" src="~/Content/Images/eoh-brand-white-text.png" />
+                @Html.ActionLink("Training Portal", "Index", "Home", new { area = "" }, new { @class = "nav-font" })
+            </div>
+
+            <div class="dropdown">
+                <button class="btn  dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Courses
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <button class="dropdown-item" type="button">Website Development</button>
+                    <button class="dropdown-item" type="button">CSS</button>
+                    <button class="dropdown-item" type="button">Something else here</button>
+                </div>
+            </div>
+
+            <!-- Search form -->
+
+            @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+            {
+                @Html.ValidationSummary(true, "result was unsuccessful")
+                <div class="form-inline md-form form-sm mt-6">
+
+                </div>
+
+            }
+
+
+            <form class="form-inline md-form form-sm mt-6">
+                <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search" aria-label="Search">
+                <i class="fas fa-search" aria-hidden="true"></i>
+
+            </form>
+
+
+
+            <div class="navbar-text">
+
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    menu
+                </button>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
+                    <li>
+                    <li class="nav-item">
+                        @Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
+                    </li>
+                </ul>
+
+                <button class="btn btn-outline-blue-grey" style="height: 40px; border-radius: 90px;">@Html.ActionLink("SignIn", "SignIn", "Account")</button>
+
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container">
+        @RenderBody()
+        <hr />
+        <footer>
+            <div class="content">
+
+                <h6>CONTACT US</h6>
+                <p>
+                    +27214253430 <br /> EOHMC.INFO@EOH.COM
+                </p>
+
+
+                <h6>LOCATION</h6>
+                <p>
+                    1st FLoor, Block B Granger Bay, V&A Waterfront Cape Town, 8001
+                </p>
+
+                <h6>SOLUTIONS</h6>
+                <p>
+                    Development Digitisation IT Infrastructure Data Analysis Enterprise App
+                </p>
+
+
+            </div>
+
+            <p style="text-align: center;">&copy; @DateTime.Now.Year - EOH Trainer Portal </p>
+        </footer>
+    </div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+@RenderSection("Scripts", false)
+</body>
+</html>

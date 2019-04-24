@@ -183,8 +183,8 @@ namespace TrainingPortal.Controllers
                         else
                         {
 
-
-                            return RedirectToAction("UserHome", "Portal", new { id = student.StudentID });
+                            
+                            return RedirectToAction("UserHome", "Portal", new {  id = v.StudentID});
                         }
                     }
                     else
