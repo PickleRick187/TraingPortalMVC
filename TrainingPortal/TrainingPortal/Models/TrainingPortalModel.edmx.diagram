@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="63dd040eb52a450b9ef6b3cac62992f0" Name="Diagram1">
+        <EntityTypeShape EntityType="TrainingPortalModel.Catalog" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrainingPortalModel.Course" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrainingPortalModel.Enrollment" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrainingPortalModel.Lecturer" Width="1.5" PointX="0.75" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrainingPortalModel.PaymentType" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrainingPortalModel.Student" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrainingPortalModel.sysdiagram" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrainingPortalModel.Training" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrainingPortalModel.TrainingType" Width="1.5" PointX="0.75" PointY="13.375" IsExpanded="true" />
+        <AssociationConnector Association="TrainingPortalModel.fk_catalogID" ManuallyRouted="false" />
+        <AssociationConnector Association="TrainingPortalModel.fk_courseID" ManuallyRouted="false" />
+        <AssociationConnector Association="TrainingPortalModel.fk_paymentTypeID" ManuallyRouted="false" />
+        <AssociationConnector Association="TrainingPortalModel.fk_studentID" ManuallyRouted="false" />
+        <AssociationConnector Association="TrainingPortalModel.fk_TrainingID" ManuallyRouted="false" />
+        <AssociationConnector Association="TrainingPortalModel.fk_LecturerID" ManuallyRouted="false" />
+        <AssociationConnector Association="TrainingPortalModel.fk_TrainingTypeID" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

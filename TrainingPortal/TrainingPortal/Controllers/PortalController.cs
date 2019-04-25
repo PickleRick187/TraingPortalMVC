@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.EnterpriseServices;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -14,48 +15,40 @@ namespace TrainingPortal.Controllers
     public class PortalController : Controller
     {
         private IStudentRepository studentRepository;
+        private ICourseRepository courseRepository;
 
         public PortalController()
         {
             this.studentRepository = new StudentRepository(new TrainingPortalEntities());
-
+            this.courseRepository = new CourseRepository(new TrainingPortalEntities());
         }
-
 
 
         // GET: Portal
         [Authorize]
         [HttpGet]
-        public ActionResult UserHome()
+        public ActionResult UserHome(int id)
         {
-            //var student = studentRepository.GetStudentByID(id);
+            var stud = studentRepository.GetStudentByID(id);
 
-            return View(/*student*/);
+            return View("UserHome", stud);
         }
 
         [ChildActionOnly]
-        public ActionResult _CourseGallery()
+        public PartialViewResult _CourseGallery()
         {
-            using (TrainingPortalEntities entities = new TrainingPortalEntities())
-            {
-                List<Course> courses;
-                courses = entities.Courses.ToList();
+ 
+            ICollection<Course> courses = courseRepository.GetCourses();
 
-                return PartialView(courses);
-            }
+            return PartialView("_CourseGallery",courses);
         }
 
 
-        public ActionResult _UserName(int id)
+        public PartialViewResult Courses()
         {
-            TrainingPortalEntities _db = new TrainingPortalEntities();
 
-            var query = from u in _db.Students
-                        where u.StudentID == id
-                        select u;
-            Student user = (Student)query.FirstOrDefault();
-
-            return PartialView("_UserName", user);
+           
+            return PartialView();
         }
 
 
@@ -76,9 +69,16 @@ namespace TrainingPortal.Controllers
             return View(useraccount);
         }
 
+        [HttpGet]
+        public ActionResult PersonalInfo(int id)
+        {
+            Student student = studentRepository.GetStudentByID(id);
+
+            return View("PersonalInfo", student);
+        }
 
         [HttpPost]
-        public ActionResult _PersonalInfo(Student user)
+        public ActionResult PersonalInfo(Student user)
         {
             TrainingPortalEntities _db = new TrainingPortalEntities();
 
@@ -89,13 +89,6 @@ namespace TrainingPortal.Controllers
                 return RedirectToAction("UserHome", new { id = user.StudentID });
             }
             return View(user);
-        }
-
-        public PartialViewResult _SideNav(Student student)
-        {
-
-
-            return PartialView(student);
         }
 
         //[Authorize]

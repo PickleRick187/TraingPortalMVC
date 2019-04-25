@@ -11,13 +11,32 @@ namespace TrainingPortal.Models.Extended
         private TrainingPortalEntities context;
 
 
+        //public Course CourseCreatedDate(int number)
+        //{
+        //    List<Course> courses;
+        //    if (number == 0)
+        //    {
+        //        courses = context.Courses.ToList();
+        //    }
+        //    else
+        //    {
+
+        //        //Ammend orderby CourseName to CreatedDate object
+        //        courses = (from course in context.Courses
+        //                   orderby course.CourseName descending
+        //                   select course).Take(number).ToList();
+
+        //    }
+        //    return new Course();
+        //}
+
         public CourseRepository(TrainingPortalEntities context)
         {
             this.context = context;
         }
 
 
-        public IEnumerable<Course> GetCourses()
+        public ICollection<Course> GetCourses()
         {
             return context.Courses.ToList();
         }

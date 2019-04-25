@@ -3,7 +3,7 @@
 
 @{
     ViewBag.Title = "UserHome";
-    Layout = "~/Views/Shared/SignedInLayout.cshtml";
+    Layout = "~/Views/Shared/_SignedInLayout.cshtml";
 }
 
 @if (Request.IsAuthenticated)
@@ -16,8 +16,8 @@
 
 <div class="container">
     <!--DASHBOARD-->
-    <section class="dashboard " style="  margin: -27px -5.6%;
-    width: 120.5%;
+    <section class="dashboard " style="  margin: -27px -14.6%;
+    width: 129.5%;
     height: auto;
     padding: 15px;
     background-color: #0d1218;
@@ -56,14 +56,14 @@
                     <li>
 
                         <div>
-                            @*Name: @Html.DisplayFor(mode => mode.StudentFirstName)
+                            Name: @Html.DisplayFor(mode => mode.StudentFirstName)
                         </div>
                     </li>
                     <li>
                         Last Name: @Html.DisplayFor(model => model.StudentLastName)
                     </li>
                     <li>
-                        Email: @Html.DisplayFor(model => model.StudentEmail)*@
+                        Email: @Html.DisplayFor(model => model.StudentEmail)
                     </li>
 
                 </ul>
@@ -80,4 +80,4 @@
 
 
 <!--Renders the Courses Page-->
-@*@RenderPage("~/Views/Shared/_Courses.cshtml")*@
+@Html.Action("Courses")

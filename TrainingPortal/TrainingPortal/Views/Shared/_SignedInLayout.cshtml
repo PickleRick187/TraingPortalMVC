@@ -15,6 +15,12 @@
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
     @*@Styles.Render("~/Content/SignedInPage")
         @Scripts.Render("~/bundles/modernizr")*@
+    
+    <style>
+        .nav-font{
+            margin-left: 1%
+        }
+    </style>
 </head>
 <body>
 
@@ -28,12 +34,12 @@
             </div>
 
             @Html.ActionLink("Training Portal", "Index", "Home", new { area = "" }, new { @class = " nav-font" })
-
+            <p style="margin-top: 30px; margin-left: 80%; font-size: 1.1em;">
+               Welcome @HttpContext.Current.User.Identity.Name
+            </p>
             <div id="Nav-UserName" style="margin-left: 90%;">
-                <p style=" margin-left: 1%; font-size: 1em;">
-                     @HttpContext.Current.User.Identity.Name
-                </p>
                 <img src="~/Content/Images/LearnerHomePage/Symbol 9 – 1.png" />
+
             </div>
             <div class="navbar-text">
 
@@ -45,13 +51,13 @@
                 </button>
 
             </div>
-        </div>
+        </div>       @Html.ActionLink("PersonalInformation", "PersonalInfo", "Portal", new { id = Model.StudentID }, null)
     </nav>
 
     <div class="container">
 
         @*@Html.Partial("_SideNav")*@
-
+ 
 
         @RenderBody()
         <hr />

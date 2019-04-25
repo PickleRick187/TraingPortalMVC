@@ -8,7 +8,7 @@ namespace TrainingPortal.Models.Extended
 {
     interface ICourseRepository : IDisposable
     {
-        IEnumerable<Course> GetCourses();
+        ICollection<Course> GetCourses();
         Course GetCourseByID(int CourseID);
         void InsertCourse(Course course);
         void DeleteCourse(int CourseID);

@@ -228,19 +228,19 @@ namespace TrainingPortal.Controllers
         {
             var verifyUrl = "/Account/VerifyAccount" + activationCode;
             var link = Request.Url.AbsoluteUri.Replace(Request.Url.PathAndQuery, verifyUrl);
-            var fromEmail = new MailAddress("lukereecephilander21@gmail.com", "Training Portal");
+            var fromEmail = new MailAddress("trainingportaleoh@gmail.com", "Training Portal");
             var toEmail = new MailAddress(emailID);
-            var fromEmailPassword = "*******";
+            var fromEmailPassword = "TrainingPortal1";
 
             string subject = "Your account is successfully created!;";
 
             string body = "<br><\br>We are excited to tell you that your Training Portal account is " +
                           "successfully created. Please click the link below to verify your account" +
                           "<br></br><a href = '" + link + "'>" + link + "</a>";
-
+                
             var smtp = new SmtpClient
             {
-                Host = "smtp.gmail",
+                Host = "smtp.gmail.com",
                 Port = 587,
                 EnableSsl = true,
                 DeliveryMethod = SmtpDeliveryMethod.Network,
@@ -253,8 +253,8 @@ namespace TrainingPortal.Controllers
                 Subject = subject,
                 Body = body,
                 IsBodyHtml = true
-            }) ;
-            //smtp.Send(message)
+            })
+                smtp.Send(message);
 
         }
 
