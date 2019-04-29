@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity.Core.Metadata.Edm;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -36,8 +37,9 @@ namespace TrainingPortal.Controllers
 
         #region Signup Post Action
 
+
+
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Signup([Bind(Exclude = "IsEmailVerified, ActivationCode")]
             Student student)
         {
@@ -75,8 +77,10 @@ namespace TrainingPortal.Controllers
 
                 #region Save to database
 
-                studentRepository.InsertStudent(student);
-                studentRepository.Save();
+                using (TrainingPortalEntities entities = new TrainingPortalEntities())
+                {
+                    entities.Students.Add(student);
+                }
 
                 #endregion
 
@@ -127,6 +131,8 @@ namespace TrainingPortal.Controllers
                 {
                     v.IsEmailVerified = true;
                     entities.SaveChanges();
+
+                    return RedirectToAction("UserHome", "Portal");
                 }
                 else
                 {
@@ -156,7 +162,6 @@ namespace TrainingPortal.Controllers
         #region Signin Post Action
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         [AllowAnonymous]
         public ActionResult Signin(StudentLogin login, string ReturnUrl = "")
         {
@@ -171,9 +176,12 @@ namespace TrainingPortal.Controllers
                         int timeout = login.RememberMe ? 525600 : 20;
                         var ticket = new FormsAuthenticationTicket(login.StudentEmail, login.RememberMe, timeout);
                         string encrypted = FormsAuthentication.Encrypt(ticket);
-                        var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, encrypted);
-                        cookie.Expires = DateTime.Now.AddMinutes(timeout);
-                        cookie.HttpOnly = true;
+                        var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, encrypted)
+                        {
+                            Expires = DateTime.Now.AddMinutes(timeout),
+                            HttpOnly = true
+                        };
+                      
                         Response.Cookies.Add(cookie);
 
                         if (Url.IsLocalUrl(ReturnUrl))
@@ -184,7 +192,7 @@ namespace TrainingPortal.Controllers
                         {
 
                             
-                            return RedirectToAction("UserHome", "Portal", new {  id = v.StudentID});
+                            return RedirectToAction("UserHome", "Portal", new { id = v.StudentID});
                         }
                     }
                     else
@@ -215,7 +223,7 @@ namespace TrainingPortal.Controllers
         public ActionResult Signout()
         {
             FormsAuthentication.SignOut();
-            return RedirectToAction("Signin", "Account");
+            return RedirectToAction("Index", "Home");
         }
 
         #endregion
@@ -226,11 +234,11 @@ namespace TrainingPortal.Controllers
 
         public void SendVerificationLinkEmail(string emailID, string activationCode)
         {
-            var verifyUrl = "/Account/VerifyAccount" + activationCode;
+            var verifyUrl = "/Account/VerifyAccount/" + activationCode;
             var link = Request.Url.AbsoluteUri.Replace(Request.Url.PathAndQuery, verifyUrl);
-            var fromEmail = new MailAddress("trainingportaleoh@gmail.com", "Training Portal");
+            var fromEmail = new MailAddress("yadhir007@gmail.com", "Training Portal");
             var toEmail = new MailAddress(emailID);
-            var fromEmailPassword = "TrainingPortal1";
+            var fromEmailPassword = "";
 
             string subject = "Your account is successfully created!;";
 
@@ -253,8 +261,8 @@ namespace TrainingPortal.Controllers
                 Subject = subject,
                 Body = body,
                 IsBodyHtml = true
-            })
-                smtp.Send(message);
+            });
+            /*   smtp.Send(message)*/
 
         }
 

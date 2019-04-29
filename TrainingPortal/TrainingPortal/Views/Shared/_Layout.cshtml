@@ -10,33 +10,28 @@
 
     <link href="~/Content/Site.css" rel="stylesheet" />
     <link href="~/Content/mdb.min.css" rel="stylesheet" />
+
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/animate.css" rel="stylesheet" />
+
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
     @*@Styles.Render("~/Content/css")*@
     @*@Scripts.Render("~/bundles/modernizr")*@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
 </head>
-<body>
+<body class="wow fadeIn">
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg  fixed-top" id="mainNav">
         <div class="container">
 
-            <div style="position: fixed;">
+            <div style="position: fixed; ">
 
-                <img class="navbar-brand" src="~/Content/Images/eoh-brand-white-text.png" />
+                <img class="navbar-brand wow " src="~/Content/Images/eoh-brand-white-text.png" />
                 @Html.ActionLink("Training Portal", "Index", "Home", new { area = "" }, new { @class = "nav-font" })
             </div>
 
-            <div class="dropdown">
-                <button class="btn  dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Courses
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <button class="dropdown-item" type="button">Website Development</button>
-                    <button class="dropdown-item" type="button">CSS</button>
-                    <button class="dropdown-item" type="button">Something else here</button>
-                </div>
-            </div>
+           
 
             <!-- Search form -->
 
@@ -50,13 +45,22 @@
             }
 
 
-            <form class="form-inline md-form form-sm mt-6">
+            <form class="form-inline md-form form-sm mt-1" style=" margin: 0; margin-left: 25%;">
                 <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search" aria-label="Search">
                 <i class="fas fa-search" aria-hidden="true"></i>
 
             </form>
 
-
+            <div class="dropdown" style="margin:0 0 0 13%">
+                <button class="btn  dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Courses
+                </button>
+                <div class="dropdown-menu " aria-labelledby="dropdownMenu2">
+                    <button class="dropdown-item" type="button">Website Development</button>
+                    <button class="dropdown-item " type="button">CSS</button>
+                    <button class="dropdown-item" type="button">Something else here</button>
+                </div>
+            </div>
 
             <div class="navbar-text">
 
@@ -71,7 +75,7 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
+                    @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
                     <li>
                     <li class="nav-item">
                         @Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
@@ -81,44 +85,62 @@
                     </li>
                 </ul>
 
-                <button class="btn btn-outline-blue-grey" style="height: 40px; border-radius: 90px;">@Html.ActionLink("SignIn", "SignIn", "Account")</button>
+            </div>
+            <div>
+
+                <button class="btn btn-outline-blue-grey account-btn wow tada " data-wow-delay="3s" style=""> @Html.ActionLink("Signup", "Signup", "Account") / <span style="">@Html.ActionLink("Have an Account?", "SignIn", "Account")</span> </button>
 
             </div>
+          
         </div>
     </nav>
 
 
-    <div class="container">
         @RenderBody()
         <hr />
-        <footer>
-            <div class="content">
-
-                <h6>CONTACT US</h6>
-                <p>
-                    +27214253430 <br /> EOHMC.INFO@EOH.COM
-                </p>
-
-
-                <h6>LOCATION</h6>
-                <p>
-                    1st FLoor, Block B Granger Bay, V&A Waterfront Cape Town, 8001
-                </p>
-
-                <h6>SOLUTIONS</h6>
-                <p>
-                    Development Digitisation IT Infrastructure Data Analysis Enterprise App
-                </p>
+<footer style="background-color:black; width:100%; ">
+    <div style="display: grid; grid-template-columns: 42% 40% 25%; padding-top: 80px; padding-bottom: 50px; ">
+        <div>
+            <h6 class="wow fadeInUp">CONTACT US</h6>
+            <p class="wow fadeInUp">
+                +27214253430 <br /> EOHMC.INFO@EOH.COM
+            </p>
+        </div>
 
 
-            </div>
-
-            <p style="text-align: center;">&copy; @DateTime.Now.Year - EOH Trainer Portal </p>
-        </footer>
+        <div>
+            <h6 class="wow fadeInUp">LOCATION</h6>
+            <p class="wow fadeInUp">
+                1st FLoor, <br/> Block B Granger Bay, <br /> V&A Waterfront Cape Town, <br/> 8001
+            </p>
+        </div>
+         
+        <div>
+            <h6 class="wow fadeInUp">SOLUTIONS</h6>
+            <p class="wow fadeInUp">
+                Development Digitisation <br/> IT Infrastructure Data Analysis <br/> Enterprise App
+            </p>
+        </div>
+            
     </div>
+    <p style="text-align: center;">&copy; @DateTime.Now.Year - EOH Trainer Portal </p>
+</footer>
 
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<script src="~/Scripts/bootstrap.min.js"></script>
+  @section ExtraJs{
+      <script src="~/Scripts/jquery.js"></script>
+      <script src="~/Scripts/bootstrap.min.js"></script>
+      <script src="~/Scripts/jquery.parallax.js"></script>
+      <script src="~/Scripts/owl.carousel.min.js"></script>
+      <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+      <script src="~/Scripts/smoothscroll.js"></script>
+      <script src="~/Scripts/wow.min.js"></script>
+      <script src="~/Scripts/custom.js"></script>
+
+      <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+      <script src="~/Scripts/bootstrap.min.js"></script>
+  }
+
+
 @RenderSection("Scripts", false)
 </body>
 </html>

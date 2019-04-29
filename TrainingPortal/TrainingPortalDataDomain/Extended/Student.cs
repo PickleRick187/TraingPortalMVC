@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 
 namespace TrainingPortal.Models
-{   
+{
     [MetadataType(typeof(StudentMetaData))]
     public partial class Student
     {
@@ -49,7 +49,6 @@ namespace TrainingPortal.Models
 
 
         public virtual ICollection<Enrollment> Enrollments { get; set; }
-
 
     }
 

@@ -48,8 +48,12 @@ namespace TrainingPortal.Models.Extended
         }
 
 
-        public void InsertCourse(Course course)
+        public void InsertCourse(Course course, HttpPostedFileBase image)
         {
+           
+            course.ImageMimeType = image.ContentType;
+            course.PhotoFile = new byte[image.ContentLength];
+            image.InputStream.Read(course.PhotoFile, 0, image.ContentLength);
             context.Courses.Add(course);
         }
 

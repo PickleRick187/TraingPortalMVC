@@ -52,7 +52,11 @@ namespace TrainingPortal.Controllers
         }
 
 
+        public PartialViewResult Courses()
+        {
 
+            return PartialView();
+        }
 
     }
 

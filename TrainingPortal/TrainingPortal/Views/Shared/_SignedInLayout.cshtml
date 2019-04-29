@@ -11,13 +11,15 @@
     <link href="~/Content/mdb.min.css" rel="stylesheet" />
     <link href="~/Content/SignedInHomePage.css" rel="stylesheet" />
     <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/animate.css" rel="stylesheet" />
 
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
     @*@Styles.Render("~/Content/SignedInPage")
         @Scripts.Render("~/bundles/modernizr")*@
-    
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
     <style>
-        .nav-font{
+        .nav-font {
             margin-left: 1%
         }
     </style>
@@ -30,12 +32,17 @@
 
             <div class="navbar-logo ">
                 <img src="~/Content/Images/LearnerEohLogo.png" />
-
             </div>
 
             @Html.ActionLink("Training Portal", "Index", "Home", new { area = "" }, new { @class = " nav-font" })
+
+            <p style="position: absolute;margin-left:45%;">
+                @Html.ActionLink("Personal Information", "PersonalInfo", "Portal", new { id = Model.StudentID }, null)
+
+            </p>
+         
             <p style="margin-top: 30px; margin-left: 80%; font-size: 1.1em;">
-               Welcome @HttpContext.Current.User.Identity.Name
+                Welcome @HttpContext.Current.User.Identity.Name
             </p>
             <div id="Nav-UserName" style="margin-left: 90%;">
                 <img src="~/Content/Images/LearnerHomePage/Symbol 9 – 1.png" />
@@ -51,20 +58,40 @@
                 </button>
 
             </div>
-        </div>       @Html.ActionLink("PersonalInformation", "PersonalInfo", "Portal", new { id = Model.StudentID }, null)
+        </div>
+
+        <div class="fa-address-book">
+          
+            @if (Request.IsAuthenticated)
+            {
+                using (Html.BeginForm("Signout", "Account", FormMethod.Post, new { id = "signoutForm" }))
+                {
+                    <a href="javascript:document.getElementById('signoutForm').submit()">Signout</a>
+                }
+            }
+        </div>
+
+
+
+
+
+        <div style=""></div>
     </nav>
 
     <div class="container">
 
         @*@Html.Partial("_SideNav")*@
- 
+
 
         @RenderBody()
         <hr />
 
     </div>
     <footer>
-        <div class="content">
+        @*<div class="content">*@
+        <div style="display: grid; grid-template-columns: 42% 40% 25%; padding-top: 80px; padding-bottom: 50px; ">
+
+
             <div>
                 <h6>CONTACT US</h6>
                 <p>
@@ -73,16 +100,20 @@
             </div>
 
 
+            <div>
+                <h6>LOCATION</h6>
+                <p>
+                    1st FLoor, <br /> Block B Granger Bay, <br /> V&A Waterfront Cape Town, <br /> 8001
+                </p>
+            </div>
 
-            <h6>LOCATION</h6>
-            <p>
-                1st FLoor, Block B Granger Bay, V&A Waterfront Cape Town, 8001
-            </p>
+            <div>
+                <h6>SOLUTIONS</h6>
+                <p>
+                    Development Digitisation <br /> IT Infrastructure Data Analysis <br /> Enterprise App
+                </p>
+            </div>
 
-            <h6>SOLUTIONS</h6>
-            <p>
-                Development Digitisation IT Infrastructure Data Analysis Enterprise App
-            </p>
         </div>
         <p style="text-align: center;">&copy; @DateTime.Now.Year - EOH Trainer Portal </p>
     </footer>
@@ -91,9 +122,27 @@
     @*@Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")*@
 
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    @*@RenderSection("Scripts", true)*@
+@*@RenderSection("ExtraJs", true)*@
+    
+
+@section ExtraJs{
+    <script src="~/Scripts/jquery.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.parallax.js"></script>
+    <script src="~/Scripts/owl.carousel.min.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/smoothscroll.js"></script>
+    <script src="~/Scripts/wow.min.js"></script>
+    <script src="~/Scripts/custom.js"></script>
+
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
-    @RenderSection("Scripts", false)
+}
+
+
 </body>
 </html>
 

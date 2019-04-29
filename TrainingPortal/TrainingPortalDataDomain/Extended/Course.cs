@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
-using System.Web.Mvc;
 
 namespace TrainingPortal.Models
 {
@@ -16,6 +15,7 @@ namespace TrainingPortal.Models
     public class CourseMetaData
     {
 
+      
         [Key]
         public int CourseID { get; set; }
 
@@ -34,10 +34,10 @@ namespace TrainingPortal.Models
 
         public int CatalogID { get; set; }
 
-        [MaxLength]
+
         public byte[] PhotoFile { get; set; }
-    
-        [HiddenInput(DisplayValue = false)]
+
+
         public string ImageMimeType { get; set; }
 
         public virtual Catalog Catalog { get; set; }

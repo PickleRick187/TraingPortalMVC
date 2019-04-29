@@ -24,7 +24,6 @@ else
 
     using (Html.BeginForm("Signup", "Account", FormMethod.Post))
     {
-        @Html.AntiForgeryToken()
 
         <div class="login-wrap">
  
@@ -110,13 +109,8 @@ else
 
 
 
-@section Scripts{
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-}
-
-
-
 
 
 

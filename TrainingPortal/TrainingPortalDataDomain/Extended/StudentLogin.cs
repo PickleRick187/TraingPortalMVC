@@ -1,9 +1,15 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.ComponentModel.DataAnnotations;
 
 namespace TrainingPortal.Models
 {
     public class StudentLogin
     {
+        
+
         [Display(Name = "Email")]
         [DataType(DataType.EmailAddress)]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Email is required.")]
@@ -16,6 +22,10 @@ namespace TrainingPortal.Models
         public string StudentPassword { get; set; }
 
 
-        [Display(Name = "Remember Me")] public bool RememberMe { get; set; }
+        [Display(Name = "Remember Me")]
+        public bool RememberMe { get; set; }
+
+   
+
     }
 }

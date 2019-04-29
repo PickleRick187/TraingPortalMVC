@@ -12,7 +12,7 @@
 
 @using (Html.BeginForm())
 {
-    @Html.AntiForgeryToken()
+ @Html.AntiForgeryToken()
     @*@Html.ValidationSummary(true, "Log in was unsuccessful.")*@
     <div class="login-wrap">
         <div class="login-html">
@@ -75,7 +75,10 @@
 
                     <div class="group">
                         <input type="submit" class="button" style="background-color: red; border-radius: 5px; width: 900px" value="Sign In">
-                    </div>
+                        <span style="color: red;"> @ViewBag.Message</span>
+                       
+                   
+                        </div>
 
                     <div class="hr"></div>
 

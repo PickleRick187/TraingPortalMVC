@@ -7,13 +7,20 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using TrainingPortal.Models;
+using TrainingPortal.Models.Extended;
 
 namespace TrainingPortal.Controllers
 {
     public class AddCourseController : Controller
     {
+        private readonly ICourseRepository courseRepository;
+
         private TrainingPortalEntities db = new TrainingPortalEntities();
 
+        public AddCourseController()
+        {
+            this.courseRepository = new CourseRepository(new TrainingPortalEntities());
+        }
 
 
         public async Task<ActionResult> Course()
@@ -29,7 +36,7 @@ namespace TrainingPortal.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateCourse(Course courseDetail, HttpPostedFileBase image)
+        public ActionResult CreateCourse([Bind(Exclude = "Enrollments, ImageMimeType")]Course courseDetail, HttpPostedFileBase image)
         {
 
             if (image == null)
@@ -39,22 +46,36 @@ namespace TrainingPortal.Controllers
 
             if (!ModelState.IsValid)
             {
-                return View("CreateCourse", courseDetail);
+                var message = "Invalid ModelState";
+
+                ViewBag.Message = message;
+
+                return View();
             }
             else
             {
-                if (image != null)
+                if (ModelState.IsValid)
                 {
-                    courseDetail.ImageMimeType = image.ContentType;
-                    courseDetail.PhotoFile = new byte[image.ContentLength];
-                    image.InputStream.Read(courseDetail.PhotoFile, 0, image.ContentLength);
+
+                    if (image != null)
+                    {
+
+                        //courseRepository.InsertCourse(courseDetail, image);
+                        Course course = new Course
+                        {
+                            ImageMimeType = image.ContentType,
+                            PhotoFile = new byte[image.ContentLength]
+                        };
+                        image.InputStream.Read(course.PhotoFile, 0, image.ContentLength);
+                        db.Courses.Add(course);
+                        db.SaveChanges();
+                        return RedirectToAction("Course");
+                    }
 
                 }
-            }
 
-            db.Courses.Add(courseDetail);
-            db.SaveChanges();
-            return View();
+            }
+            return View(courseDetail);
         }
 
 
@@ -114,7 +135,7 @@ namespace TrainingPortal.Controllers
 
                 db.Entry(course).State = EntityState.Modified;
                 await db.SaveChangesAsync();
-                return RedirectToAction("CreateCourse");
+                return RedirectToAction("Course");
             }
             return View(course);
         }

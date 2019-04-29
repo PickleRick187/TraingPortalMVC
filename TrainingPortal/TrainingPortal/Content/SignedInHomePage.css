@@ -111,7 +111,7 @@ h3{
 
 
 h1, p {
-    text-align: center;
+  
     padding-bottom: 10px;
 }
 
@@ -145,18 +145,29 @@ h2 {
     color: whitesmoke;
 }
 
+   .welcome {
+       text-align: center;
+   }
 
 
-
-#calender-section {
-    padding: 20px 10px 0 10px;
-    margin-left: 5%;
-    width: 50%;
-    height: 200px;
-    padding-left: 20px;
-    box-shadow: 1px 0px 20px 0px black;
-    border-radius: 6px;
+@font-face {
+    font-family: 'FrederickatheGreat-Regular';
+    src: url('fonts/FrederickatheGreat-Regular.ttf') format('truetype');
 }
+   .welcome>h1{
+       font-family: FrederickatheGreat-Regular;
+   }
+
+
+    #calender-section {
+        padding: 20px 10px 0 10px;
+        margin-left: 5%;
+        width: 50%;
+        height: 200px;
+        padding-left: 20px;
+        box-shadow: 1px 0px 20px 0px black;
+        border-radius: 6px;
+    }
 
 #user-profile {
     padding: 20px 10px 0 10px;
@@ -442,16 +453,14 @@ footer {
     
     margin-top: 9%;
     background-color: #0d1218;
-    margin-left: 8%;
-    width: 92%;
-    padding-top: 50px;
+    padding: 0 10% 0 15%;
+    padding-top: 30px;
     height: 100%;
    margin-bottom: 0px;
 }
 
-h6{
-    text-align: center
-
+footer>p{
+    align-content:left;
 }
 
 

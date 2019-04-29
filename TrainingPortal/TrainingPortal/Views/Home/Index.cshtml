@@ -4,7 +4,7 @@
 }
 
 <!-- Page Content -->
-<div class="container">
+<div class="container ">
 
     <div id="homeIndicator" class="carousel slide my-4" data-ride="carousel">
         <ol class="Home-carousel-indicators Home-new">
@@ -14,27 +14,29 @@
         </ol>
 
 
-
+      
 
         <div class="carousel-inner home-back" role="listbox">
 
-            <div class="carousel-item active">
+            <div class="carousel-item active wow fadeIn">
                 <img src="~/Content/Images/LearnerHomePage/Office-Day@2x.png" />
             </div>
 
-            <div class="carousel-item">
+            <div class="carousel-item wow fadeIn">
                 <img src="~/Content/Images/EOHMessage.jpg" />
             </div>
 
-            <div class="carousel-item">
+            <div class="carousel-item wow fadeIn">
 
                 <img src="~/Content/Images/Updatedsyntxicons.png" />
             </div>
 
             <div class="home-section">
-                <h2 id="Home-Title">ANSWER YOUR CALLING</h2>
-                <h4 id="home-text">Lorem ipsum dolor sit amet, his ad choro scaevola qualisque.</h4>
-                <button class="button btn btn-danger">START FOR FREE</button>
+                <h2 id="Home-Title" class="wow fadeIn" data-wow-delay="0.4s">ANSWER YOUR CALLING</h2>
+                <h4 id="home-text" class="wow fadeIn" data-wow-delay="0.5s">Lorem ipsum dolor sit amet, his ad choro scaevola qualisque.</h4>
+                <button class="button btn btn-danger wow  zoomIn animated infi" data-wow-duration="0.8s" data-wow-delay="0.1s">@Html.ActionLink("START FOR FREE", "Signup", "Account")</button>
+                
+
             </div>
 
         </div>
@@ -43,12 +45,12 @@
         <!-- END OF -->
         <div id="black-box" style="" class="row">
 
-            <p>MCSD: APP BUILDER</p>
-            <p>NOW STREAMING</p>
-            <p>04 - 08 MARCH</p>
+            <p class="wow fadeInRight" data-wow-delay="1s">MCSD: APP BUILDER</p>
+            <p class="wow fadeInRight" data-wow-delay="1.1s">NOW STREAMING</p>
+            <p class="wow fadeInRight" data-wow-delay="1.3s">04 - 08 MARCH</p>
         </div>
     </div>
-
+    
 
     <a class="Home-control-prev" href="#homeIndicator" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -67,15 +69,15 @@
 
 </div>
 <!--slide show-->
-<div style="position: absolute; margin-top: 50px; margin-left: -100px; width: 265px;">
-    <h2 style=" font-size: 1.0em; ">
+<div style="position: absolute; margin-top: 50px; margin-left: 100px; width: 265px;">
+    <h2 style=" font-size: 1.0em; " class="wow fadeInLeft" data-wow-delay=".01s">
         POPULAR ON EOH
         ACADEMY
     </h2>
-    <p>Stay 2 steps ahead of evolving security threats. Start with Pluralsight IQ to measure your skills in less than 5 minutes.</p>
+    <p class="wow fadeIn" data-wow-delay="1.3s">Stay 2 steps ahead of evolving security threats. Start with Pluralsight IQ to measure your skills in less than 5 minutes.</p>
 </div>
 
-<div class="slide-row" style=" margin-top:90px; margin-left: 180px;">
+<div class="slide-row" style=" margin-top:90px; margin-left: 480px;">
     <!-- /.col-lg-3 -->
     <div class="slide-col-lg-9">
 
@@ -149,6 +151,9 @@
                                 </div>
                             </div>
                         </div>
+
+
+
 
                         <!--End-First Slide-->
                     </div>
@@ -225,6 +230,12 @@
     <!-- /.col-lg-9 -->
 
 </div>
+<div style="margin-left: 10%; width: 80%; ">@Html.Action("Courses")</div>
 
-@RenderPage("~/Views/Shared/Courses.cshtml")
-
+<script src="~/Scripts/jquery.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/jquery.parallax.js"></script>
+<script src="~/Scripts/owl.carousel.min.js"></script>
+<script src="~/Scripts/smoothscroll.js"></script>
+<script src="~/Scripts/wow.min.js"></script>
+<script src="~/Scripts/custom.js"></script>

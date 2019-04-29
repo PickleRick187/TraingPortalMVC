@@ -1,6 +1,6 @@
 ﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
-  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -51,7 +51,17 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -63,6 +73,30 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -72,32 +106,15 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="System.Web.Razor">
-      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Webpages">
-      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.4\lib\net45\System.Web.Webpages.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Webpages.Deployment">
-      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.4\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Webpages.Razor">
-      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.4\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Helpers">
-      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.Mvc">
-      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\animate.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\fonts\LICENSE.txt" />
+    <Content Include="Content\fonts\OFL.txt" />
     <Content Include="Content\Images\Courses\3 csharp-e7b8fcd4ce.png" />
     <Content Include="Content\Images\Courses\5 jquery-c93ba170c1.png" />
     <Content Include="Content\Images\Courses\6 nodejs-601628d09d.png" />
@@ -133,16 +150,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Models\TrainingPortalModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>TrainingPortalModel.Context.cs</LastGenOutput>
-      <DependentUpon>TrainingPortalModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\TrainingPortalModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TrainingPortalModel.edmx</DependentUpon>
-      <LastGenOutput>TrainingPortalModel.cs</LastGenOutput>
-    </Content>
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
@@ -152,18 +159,82 @@
     <Content Include="Content\bootstrap-reboot.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Models\TrainingPortalModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TrainingPortalModel.edmx</DependentUpon>
+      <LastGenOutput>TrainingPortalModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\TrainingPortalModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TrainingPortalModel.edmx</DependentUpon>
+      <LastGenOutput>TrainingPortalModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\AnimateSecForm.js" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
     <Content Include="Scripts\bootstrap.js.map" />
     <Content Include="Scripts\bootstrap.min.js.map" />
+    <EntityDeploy Include="Models\TrainingPortalModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TrainingPortalModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\TrainingPortalModel.edmx.diagram">
+      <DependentUpon>TrainingPortalModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Content\fonts\AbrilFatface-Regular.ttf" />
+    <Content Include="Content\fonts\Aclonica-Regular.ttf" />
+    <Content Include="Content\fonts\AmaticSC-Bold.ttf" />
+    <Content Include="Content\fonts\AmaticSC-Regular.ttf" />
+    <Content Include="Content\fonts\Arapey-Italic.ttf" />
+    <Content Include="Content\fonts\Arapey-Regular.ttf" />
+    <Content Include="Content\fonts\BadScript-Regular.ttf" />
+    <Content Include="Content\fonts\BerkshireSwash-Regular.ttf" />
+    <Content Include="Content\fonts\BlackAndWhitePicture-Regular.ttf" />
+    <Content Include="Content\fonts\CabinSketch-Bold.ttf" />
+    <Content Include="Content\fonts\CabinSketch-Regular.ttf" />
+    <Content Include="Content\fonts\Calligraffitti-Regular.ttf" />
+    <Content Include="Content\fonts\Cookie-Regular.ttf" />
+    <Content Include="Content\fonts\DaysOne-Regular.ttf" />
+    <Content Include="Content\fonts\DellaRespira-Regular.ttf" />
+    <Content Include="Content\fonts\ElsieSwashCaps-Black.ttf" />
+    <Content Include="Content\fonts\ElsieSwashCaps-Regular.ttf" />
+    <Content Include="Content\fonts\FrederickatheGreat-Regular.ttf" />
+    <Content Include="Content\fonts\GreatVibes-Regular.ttf" />
+    <Content Include="Content\fonts\JosefinSlab-Bold.ttf" />
+    <Content Include="Content\fonts\JosefinSlab-BoldItalic.ttf" />
+    <Content Include="Content\fonts\JosefinSlab-Italic.ttf" />
+    <Content Include="Content\fonts\JosefinSlab-Light.ttf" />
+    <Content Include="Content\fonts\JosefinSlab-LightItalic.ttf" />
+    <Content Include="Content\fonts\JosefinSlab-Regular.ttf" />
+    <Content Include="Content\fonts\JosefinSlab-SemiBold.ttf" />
+    <Content Include="Content\fonts\JosefinSlab-SemiBoldItalic.ttf" />
+    <Content Include="Content\fonts\JosefinSlab-Thin.ttf" />
+    <Content Include="Content\fonts\JosefinSlab-ThinItalic.ttf" />
+    <Content Include="Content\fonts\KaushanScript-Regular.ttf" />
+    <Content Include="Content\fonts\LoveYaLikeASister.ttf" />
+    <Content Include="Content\fonts\Merienda-Bold.ttf" />
+    <Content Include="Content\fonts\Merienda-Regular.ttf" />
+    <Content Include="Content\fonts\MountainsofChristmas-Bold.ttf" />
+    <Content Include="Content\fonts\MountainsofChristmas-Regular.ttf" />
+    <Content Include="Content\fonts\Pacifico-Regular.ttf" />
+    <Content Include="Content\fonts\RockSalt-Regular.ttf" />
+    <Content Include="Content\fonts\Sacramento-Regular.ttf" />
+    <Content Include="Content\fonts\Satisfy-Regular.ttf" />
+    <Content Include="Content\fonts\SirinStencil-Regular.ttf" />
+    <Content Include="Content\fonts\Srisakdi-Bold.ttf" />
+    <Content Include="Content\fonts\Srisakdi-Regular.ttf" />
+    <Content Include="Content\fonts\Syncopate-Bold.ttf" />
+    <Content Include="Content\fonts\Syncopate-Regular.ttf" />
+    <Content Include="Content\fonts\Tangerine-Bold.ttf" />
+    <Content Include="Content\fonts\Tangerine-Regular.ttf" />
+    <Content Include="Content\fonts\Yesteryear-Regular.ttf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\custom.js" />
     <Content Include="Scripts\JavaScript.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -174,17 +245,24 @@
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
+    <Content Include="Scripts\jquery.js" />
+    <Content Include="Scripts\jquery.parallax.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\owl.carousel.min.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Scripts\smoothscroll.js" />
+    <Content Include="Scripts\wow.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -201,18 +279,16 @@
     <Compile Include="Models\Course.cs">
       <DependentUpon>TrainingPortalModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Crypto.cs" />
+    <Compile Include="Models\Extended\AccountModels.cs" />
+    <Compile Include="Models\Security\Crypto.cs" />
     <Compile Include="Models\Enrollment.cs">
       <DependentUpon>TrainingPortalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Extended\Course.cs" />
-    <Compile Include="Models\Extended\CourseDetails.cs" />
-    <Compile Include="Models\Extended\CourseRepository.cs" />
     <Compile Include="Models\Extended\ICourseRepository.cs" />
     <Compile Include="Models\Extended\IStudentRepository.cs" />
     <Compile Include="Models\Extended\Student.cs" />
     <Compile Include="Models\Extended\StudentLogin.cs" />
-    <Compile Include="Models\Extended\StudentRepository.cs" />
     <Compile Include="Models\Extended\TrainingPortalModel.Context.cs" />
     <Compile Include="Models\Lecturer.cs">
       <DependentUpon>TrainingPortalModel.tt</DependentUpon>
@@ -221,6 +297,9 @@
       <DependentUpon>TrainingPortalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Student.cs">
+      <DependentUpon>TrainingPortalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>TrainingPortalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Training.cs">
@@ -248,15 +327,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
-    <EntityDeploy Include="Models\TrainingPortalModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>TrainingPortalModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\TrainingPortalModel.edmx.diagram">
-      <DependentUpon>TrainingPortalModel.edmx</DependentUpon>
-    </Content>
     <None Include="packages.config" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Shared\_SignedInLayout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -268,12 +339,11 @@
     <Content Include="Views\Portal\SelectedCours.cshtml" />
     <Content Include="Views\Portal\UserDetails.cshtml" />
     <Content Include="Views\Portal\UserHome.cshtml" />
-    <Content Include="Views\Portal\_PersonalInfo.cshtml" />
+    <Content Include="Views\Portal\PersonalInfo.cshtml" />
     <Content Include="Views\Portal\_UserName.cshtml" />
     <Content Include="Views\Shared\Courses.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\SearchedCourse.cshtml" />
-    <Content Include="Views\Shared\SignedInLayout.cshtml" />
     <Content Include="Views\Shared\SignInSignUp.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\Portal\_CourseDetails.cshtml" />
@@ -337,7 +407,7 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

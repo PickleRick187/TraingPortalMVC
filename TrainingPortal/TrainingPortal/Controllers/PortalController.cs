@@ -24,21 +24,23 @@ namespace TrainingPortal.Controllers
         }
 
 
+
+
         // GET: Portal
         [Authorize]
         [HttpGet]
         public ActionResult UserHome(int id)
         {
-            var stud = studentRepository.GetStudentByID(id);
-
-            return View("UserHome", stud);
+            var idStudentById = studentRepository.GetStudentByID(id);
+        
+                return View("UserHome", idStudentById);
+                   
         }
 
         [ChildActionOnly]
         public PartialViewResult _CourseGallery()
         {
- 
-            ICollection<Course> courses = courseRepository.GetCourses();
+             ICollection<Course> courses = courseRepository.GetCourses();
 
             return PartialView("_CourseGallery",courses);
         }
@@ -47,7 +49,6 @@ namespace TrainingPortal.Controllers
         public PartialViewResult Courses()
         {
 
-           
             return PartialView();
         }
 
