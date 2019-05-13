@@ -365,13 +365,12 @@ nav#mainNav {
 
 
 footer {
-    
-    margin-top: 9%;
-    background-color: #0d1218;
+   background-color: #0d1218;
     padding: 0 10% 0 15%;
     padding-top: 30px;
     height: 100%;
-    margin-bottom: 0px;
+    margin-bottom: -10%;
+width:101.3% !important; 
 }
 
 footer>p{

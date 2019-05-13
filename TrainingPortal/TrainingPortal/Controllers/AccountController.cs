@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data.Entity.Core.Metadata.Edm;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -7,28 +6,33 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using TrainingPortal.Models;
-using TrainingPortal.Models.Extended;
+using TrainingPortal.DAL.Interfaces;
+using TrainingPortal.BLL.Security;
+using TrainingPortal.DAL;
 
 
 namespace TrainingPortal.Controllers
 {
     public class AccountController : Controller
     {
-        private IStudentRepository studentRepository;
-
+       
         public AccountController()
         {
-            this.studentRepository = new StudentRepository(new TrainingPortalEntities());
         }
 
-        public AccountController(IStudentRepository studentRepository)
+        private IStudentRepository _studentRepository;
+        private IQueryStudentEmail _queryStudentEmail;
+        private TrainingPortalEntities _context;
+        public AccountController(IStudentRepository studentRepository, IQueryStudentEmail queryStudentEmail)
         {
-            this.studentRepository = studentRepository;
+            this._studentRepository = studentRepository;
+            this._queryStudentEmail = queryStudentEmail;
+         
         }
+
 
         #region Signup
-
-        //Get
+        //Get Signup Page
         [HttpGet]
         public ActionResult Signup()
         {
@@ -38,11 +42,12 @@ namespace TrainingPortal.Controllers
         #region Signup Post Action
 
 
-
+        //Post data
         [HttpPost]
         public ActionResult Signup([Bind(Exclude = "IsEmailVerified, ActivationCode")]
-            Student student)
+            RegisterModel student)
         {
+
             bool Status = false;
             string message = "";
 
@@ -51,7 +56,11 @@ namespace TrainingPortal.Controllers
             {
                 #region Verify Email Exist
 
-                var isExist = studentRepository.IsEmailExist(student.StudentEmail);
+                //var isExist = _queryStudentEmail.IsEmailRegistered(student.StudentEmail);
+
+
+                var isExist = checkReg(student.StudentEmail);
+
                 if (isExist)
                 {
                     ModelState.AddModelError("EmailExist", "Email Address already exist.");
@@ -62,6 +71,7 @@ namespace TrainingPortal.Controllers
 
                 #region Activation Code
 
+                
                 student.ActivationCode = Guid.NewGuid();
 
                 #endregion
@@ -77,10 +87,24 @@ namespace TrainingPortal.Controllers
 
                 #region Save to database
 
-                using (TrainingPortalEntities entities = new TrainingPortalEntities())
+                Student learner = new Student()
                 {
-                    entities.Students.Add(student);
-                }
+                    StudentEmail = student.StudentEmail,
+                    StudentPassword = student.StudentPassword,
+                    StudentFirstName = student.StudentFirstName,
+                    StudentLastName = student.StudentLastName,
+                    StudentID = student.StudentID
+                };
+
+             TrainingPortalEntities entities = new TrainingPortalEntities();
+               
+                   entities.Students.Add(learner);
+                    entities.SaveChanges();
+                
+            
+               //_studentRepository.InsertStudent(learner);
+               //_studentRepository.Save();
+           
 
                 #endregion
 
@@ -109,10 +133,10 @@ namespace TrainingPortal.Controllers
         }
         #endregion
 
-
-
-
         #endregion
+
+
+     
 
 
         #region Account Verification 
@@ -123,7 +147,7 @@ namespace TrainingPortal.Controllers
             bool Status = false;
             using (TrainingPortalEntities entities = new TrainingPortalEntities())
             {
-
+                
                 entities.Configuration.ValidateOnSaveEnabled = false;
                 var v = entities.Students.Where(s => s.ActivationCode == new Guid(id)).FirstOrDefault();
 
@@ -143,8 +167,6 @@ namespace TrainingPortal.Controllers
                 ViewBag.Status = Status;
                 return View();
             }
-
-
         }
 
         #endregion
@@ -163,13 +185,18 @@ namespace TrainingPortal.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult Signin(StudentLogin login, string ReturnUrl = "")
+        public ActionResult Signin(StudentLoginModel login, string ReturnUrl = "")
         {
             string message = "";
-            using (TrainingPortalEntities entities = new TrainingPortalEntities())
-            {
-                var v = entities.Students.Where(s => s.StudentEmail == login.StudentEmail).FirstOrDefault();
-                if (v != null)
+            TrainingPortalEntities entities = new TrainingPortalEntities();
+
+                //var v = _studentRepository.CheckEmail(login.StudentEmail);
+
+                var v = (from s in entities.Students
+                    where s.StudentEmail == login.StudentEmail
+                    select s).FirstOrDefault();
+
+                if ( v != null )
                 {
                     if (string.Compare(Crypto.Hash(login.StudentPassword), v.StudentPassword) == 0)
                     {
@@ -204,7 +231,7 @@ namespace TrainingPortal.Controllers
                 {
                     message = "Invalid creditential provided.";
                 }
-            }
+            
 
             ViewBag.Message = message;
             return View();
@@ -228,6 +255,15 @@ namespace TrainingPortal.Controllers
 
         #endregion
 
+
+        public bool checkReg(string EmailID)
+        {
+            using (TrainingPortalEntities entities = new TrainingPortalEntities())
+            {
+                var isExist = entities.Students.Where(e => e.StudentEmail == EmailID).FirstOrDefault();
+                return isExist != null;
+            }
+        }
 
 
         #region Send Link to Email for Verification

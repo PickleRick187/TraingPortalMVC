@@ -1,4 +1,4 @@
-﻿@model TrainingPortal.Models.StudentLogin
+﻿@model TrainingPortal.Models.StudentLoginModel
 
 @{
     ViewBag.Title = "Signin";
@@ -16,8 +16,8 @@
     @*@Html.ValidationSummary(true, "Log in was unsuccessful.")*@
     <div class="login-wrap">
         <div class="login-html">
-            <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab" onclick="hideSignUp()">Sign In</label>
-            <input id="tab-2" type="radio" name="tab" class="sign-up" onclick="tabSignUpButton">  <label for="tab-2" class="tab">Sign Up</label>
+            <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab" onclick="hideSignUp()" style="margin-left: 20%">Sign In</label>
+            <input id="tab-2" type="radio" name="tab" class="sign-up" onclick="tabSignUpButton">  <label for="tab-2" class="tab"></label>
 
 
             <div class="login-form">

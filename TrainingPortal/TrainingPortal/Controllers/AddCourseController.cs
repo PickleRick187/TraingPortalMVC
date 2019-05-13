@@ -6,8 +6,10 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using TrainingPortal.Models;
-using TrainingPortal.Models.Extended;
+using TrainingPortal.DAL;
+using TrainingPortal.DAL.Interfaces;
+using TrainingPortal.BLL;
+
 
 namespace TrainingPortal.Controllers
 {
@@ -77,7 +79,6 @@ namespace TrainingPortal.Controllers
             }
             return View(courseDetail);
         }
-
 
 
 

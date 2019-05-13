@@ -1,26 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
-using System.EnterpriseServices;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
+using TrainingPortal.DAL;
+using TrainingPortal.DAL.Interfaces;
+using TrainingPortal.BLL;
+using TrainingPortal.BLL.Data;
 using TrainingPortal.Models;
-using TrainingPortal.Models.Extended;
+
 
 namespace TrainingPortal.Controllers
 {
     public class PortalController : Controller
     {
-        private IStudentRepository studentRepository;
-        private ICourseRepository courseRepository;
-
+        private IStudentRepository _studentRepository;
+        private ICourseRepository _courseRepository;
+        
         public PortalController()
         {
-            this.studentRepository = new StudentRepository(new TrainingPortalEntities());
-            this.courseRepository = new CourseRepository(new TrainingPortalEntities());
+            this._studentRepository = new StudentRepository(new TrainingPortalEntities());
+            this._courseRepository = new CourseRepository(new TrainingPortalEntities());
         }
 
 
@@ -31,16 +29,20 @@ namespace TrainingPortal.Controllers
         [HttpGet]
         public ActionResult UserHome(int id)
         {
-            var idStudentById = studentRepository.GetStudentByID(id);
-        
-                return View("UserHome", idStudentById);
-                   
+            var StudentById = _studentRepository.GetStudentByID(id);
+            if (StudentById != null)
+            {
+             return View("UserHome", StudentById);
+            }
+
+            return RedirectToAction("UserHome", "Home");
         }
+
 
         [ChildActionOnly]
         public PartialViewResult _CourseGallery()
         {
-             ICollection<Course> courses = courseRepository.GetCourses();
+             ICollection<Course> courses = _courseRepository.GetCourses();
 
             return PartialView("_CourseGallery",courses);
         }
@@ -53,27 +55,29 @@ namespace TrainingPortal.Controllers
         }
 
 
-        [HttpGet]
-        public async Task<ActionResult> _PersonalInfo(int? id)
-        {
-            TrainingPortalEntities _db = new TrainingPortalEntities();
+        //[HttpGet]
+        //public async Task<ActionResult> _PersonalInfo(int? id)
+        //{
+        //    TrainingPortalEntities _db = new TrainingPortalEntities();
 
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Student useraccount = await _db.Students.FindAsync(id);
-            if (useraccount == null)
-            {
-                return HttpNotFound();
-            }
-            return View(useraccount);
-        }
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+
+        //    Student useraccount = await _db.Students.FindAsync(id);
+        //    if (useraccount == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(useraccount);
+        //}
 
         [HttpGet]
         public ActionResult PersonalInfo(int id)
         {
-            Student student = studentRepository.GetStudentByID(id);
+
+            Student student = _studentRepository.GetStudentByID(id);
 
             return View("PersonalInfo", student);
         }
