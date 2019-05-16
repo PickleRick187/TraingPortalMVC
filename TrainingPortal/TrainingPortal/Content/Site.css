@@ -6,8 +6,6 @@ body {
     color: white;
     font-family: KaushanScript-Regular;
     width: 1500px;
-   
-    
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -81,6 +79,11 @@ nav#mainNav {
     height: 560px;
     background-size: 100%;
     text-shadow: 3px 1px 11px black;
+    max-width: 100%;
+}
+
+#home{
+   margin: 0px 0px 0px 0px;
 }
 
 
