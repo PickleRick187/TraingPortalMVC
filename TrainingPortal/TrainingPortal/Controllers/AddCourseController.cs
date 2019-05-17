@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using TrainingPortal.DAL;
-using TrainingPortal.DAL.Interfaces;
+using TrainingPortal.BLL.Interfaces;
 using TrainingPortal.BLL;
 
 

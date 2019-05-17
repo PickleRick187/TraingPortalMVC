@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TrainingPortal.DAL.Interfaces;
+using TrainingPortal.BLL.Interfaces;
 using  TrainingPortal.DAL;
 
 
-namespace TrainingPortal.Infrastructure.Data
+namespace TrainingPortal.BLL
 {
     public class EfQueryStudentByEmail : IQueryStudentEmail
     {
@@ -20,14 +20,12 @@ namespace TrainingPortal.Infrastructure.Data
 
         public bool IsEmailRegistered(string EmailID)
         {
-            using (TrainingPortalEntities entities = new TrainingPortalEntities())
-            {
+        
                 //Checks if the input email exist within the database
-                var isExist = entities.Students.Where(s => s.StudentEmail == EmailID).FirstOrDefault();
+                var isExist = _context.Students.Where(s => s.StudentEmail == EmailID).FirstOrDefault();
 
                 return isExist != null;
 
             }
         }
-    }
 }

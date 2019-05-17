@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using  TrainingPortal.BLL;
+using TrainingPortal.DAL;
 
-namespace TrainingPortal.DAL.Interfaces
+namespace TrainingPortal.BLL.Interfaces
 {
     public interface IStudentRepository : IDisposable
     {
@@ -12,5 +14,7 @@ namespace TrainingPortal.DAL.Interfaces
         void DeleteStudent(int studentID);
         void UpdateStudent(Student student);
         void Save();
+        Student VerifyEmail(string id);
+        bool CheckReg(string EmailID);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
+using TrainingPortal.DAL;
 
 namespace TrainingPortal.Models
 {
@@ -26,7 +27,10 @@ namespace TrainingPortal.Models
 
     public class RegisterModel
         {
-            [Key]
+
+           
+
+        [Key]
             [Required]
             public int StudentID { get; set; }
 

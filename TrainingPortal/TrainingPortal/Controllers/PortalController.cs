@@ -2,19 +2,18 @@
 using System.Data.Entity;
 using System.Web.Mvc;
 using TrainingPortal.DAL;
-using TrainingPortal.DAL.Interfaces;
 using TrainingPortal.BLL;
-using TrainingPortal.BLL.Data;
-using TrainingPortal.Models;
+using TrainingPortal.BLL.Interfaces;
 
 
 namespace TrainingPortal.Controllers
 {
     public class PortalController : Controller
     {
+
         private IStudentRepository _studentRepository;
         private ICourseRepository _courseRepository;
-        
+
         public PortalController()
         {
             this._studentRepository = new StudentRepository(new TrainingPortalEntities());
@@ -22,9 +21,7 @@ namespace TrainingPortal.Controllers
         }
 
 
-
-
-        // GET: Portal
+        // GET: Portal Page and current logged in student 
         [Authorize]
         [HttpGet]
         public ActionResult UserHome(int id)
@@ -32,82 +29,55 @@ namespace TrainingPortal.Controllers
             var StudentById = _studentRepository.GetStudentByID(id);
             if (StudentById != null)
             {
-             return View("UserHome", StudentById);
+                return View("UserHome", StudentById);
             }
 
-            return RedirectToAction("UserHome", "Home");
+            return RedirectToAction("UserHome", "Portal");
         }
 
 
         [ChildActionOnly]
         public PartialViewResult _CourseGallery()
         {
-             ICollection<Course> courses = _courseRepository.GetCourses();
+            ICollection<Course> courses = _courseRepository.GetCourses();
 
-            return PartialView("_CourseGallery",courses);
+            return PartialView("_CourseGallery", courses);
         }
 
 
         public PartialViewResult Courses()
         {
-
             return PartialView();
         }
 
-
-        //[HttpGet]
-        //public async Task<ActionResult> _PersonalInfo(int? id)
-        //{
-        //    TrainingPortalEntities _db = new TrainingPortalEntities();
-
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-
-        //    Student useraccount = await _db.Students.FindAsync(id);
-        //    if (useraccount == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(useraccount);
-        //}
-
+        #region Edit Student
+        //Gets: Student Edit Page using the id to get current logged in student 
         [HttpGet]
         public ActionResult PersonalInfo(int id)
         {
 
-            Student student = _studentRepository.GetStudentByID(id);
+            TrainingPortalEntities entities = new TrainingPortalEntities();
 
-            return View("PersonalInfo", student);
+            var studentID = entities.Students.Find(id);
+
+            return View("PersonalInfo", studentID);
         }
 
+
+        //Edit: Student Details
         [HttpPost]
         public ActionResult PersonalInfo(Student user)
         {
-            TrainingPortalEntities _db = new TrainingPortalEntities();
+            TrainingPortalEntities entities = new TrainingPortalEntities();
 
             if (ModelState.IsValid)
             {
-                _db.Entry(user).State = EntityState.Modified;
-                _db.SaveChanges();
-                return RedirectToAction("UserHome", new { id = user.StudentID });
+                entities.Entry(user).State = EntityState.Modified;
+                entities.SaveChanges();
+                return RedirectToAction("UserHome", new {id = user.StudentID});
             }
             return View(user);
         }
-
-        //[Authorize]
-        //public ActionResult UserHome(int id)
-        //{
-
-
-        //    var model = studentRepository.GetStudentByID(id);
-        //    if (model == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-
-        //    return View(model);
-        //}
+        #endregion
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TrainingPortal.DAL.Interfaces;
+using TrainingPortal.BLL.Interfaces;
 using TrainingPortal.DAL;
 
 namespace TrainingPortal.BLL
@@ -26,9 +26,10 @@ namespace TrainingPortal.BLL
 
         public ICollection<Course> GetCourses()
         {
-            List<Course> courses = _context.Courses.ToList();
+            ICollection<Course> courses = _context.Courses.ToList();
             return courses;
         }
 
+        
     }
 }

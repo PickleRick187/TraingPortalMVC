@@ -47,6 +47,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CourseRepository.cs" />
+    <Compile Include="Interfaces\ICourseRepository.cs" />
+    <Compile Include="Interfaces\IQueryStudentEmail.cs" />
+    <Compile Include="Interfaces\IStudentRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryStudentByEmail.cs" />
     <Compile Include="Security\Crypto.cs" />

@@ -59,9 +59,6 @@
     <Compile Include="Enrollment.cs">
       <DependentUpon>TrainingPortalModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\ICourseRepository.cs" />
-    <Compile Include="Interfaces\IQueryStudentEmail.cs" />
-    <Compile Include="Interfaces\IStudentRepository.cs" />
     <Compile Include="Lecturer.cs">
       <DependentUpon>TrainingPortalModel.tt</DependentUpon>
     </Compile>

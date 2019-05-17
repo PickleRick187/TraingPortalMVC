@@ -2,7 +2,7 @@
 using TrainingPortal.BLL;
 using  TrainingPortal.DAL;
 
-using TrainingPortal.DAL.Interfaces;
+using TrainingPortal.BLL.Interfaces;
 
 
 namespace TrainingPortal.Controllers

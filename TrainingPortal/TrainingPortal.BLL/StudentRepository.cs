@@ -2,68 +2,81 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Data.Entity;
-using TrainingPortal.DAL.Interfaces;
+using TrainingPortal.BLL.Interfaces;
 using  TrainingPortal.DAL;
 
-namespace TrainingPortal.BLL.Data
+namespace TrainingPortal.BLL
 {
 
     public class StudentRepository : IStudentRepository, IDisposable
     {
 
-        private TrainingPortalEntities context;
+        private TrainingPortalEntities _context;
 
 
-        public StudentRepository(TrainingPortalEntities _context)
+        public StudentRepository(TrainingPortalEntities context)
         {
-            this.context = _context;
+            this._context = context;
         }
 
 
         public IEnumerable<Student> GetStudents()
         {
-            return context.Students.ToList();
+            return _context.Students.ToList();
         }
 
 
 
-        public Student GetStudentByID(int Id)
+        public Student GetStudentByID(int studentID)
         {
-            return context.Students.Find(Id);
+            return _context.Students.Find(studentID);
         }
 
 
         public void InsertStudent(Student student)
         {
-            context.Students.Add(student);
+            _context.Students.Add(student);
         }
 
         public Student CheckEmail(string studentEmail)
         {
-            var v = (from s in context.Students
+            return (from s in _context.Students
                 where s.StudentEmail == studentEmail
-                select s).FirstOrDefault();
+                select s).FirstOrDefault(); ;
+        }
 
-            return v;
+
+        public Student VerifyEmail(string id)
+        {
+            _context.Configuration.ValidateOnSaveEnabled = false;
+            return _context.Students.Where(s => s.ActivationCode == new Guid(id)).FirstOrDefault();
         }
 
         public void DeleteStudent(int StudentID)
         {
-            Student student = context.Students.Find(StudentID);
-            context.Students.Remove(student);
+            Student student = _context.Students.Find(StudentID);
+            _context.Students.Remove(student);
         }
 
 
         public void UpdateStudent(Student student)
         {
-            context.Entry(student).State = EntityState.Modified;
+            _context.Entry(student).State = EntityState.Modified;
         }
 
 
         public void Save()
         {
-            context.SaveChanges();
+            _context.SaveChanges();
         }
+
+        public bool CheckReg(string EmailID)
+        {
+           var isExist = _context.Students.Where(e => e.StudentEmail == EmailID).FirstOrDefault();
+           return isExist != null;
+        }
+
+
 
 
         private bool disposed = false;
@@ -75,7 +88,7 @@ namespace TrainingPortal.BLL.Data
             {
                 if (disposing)
                 {
-                    context.Dispose();
+                    _context.Dispose();
                 }
             }
 

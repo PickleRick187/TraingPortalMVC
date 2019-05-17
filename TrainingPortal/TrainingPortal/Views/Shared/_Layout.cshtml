@@ -49,18 +49,39 @@
                 <i class="fas fa-search" aria-hidden="true"></i>
 
             </form>
+            <div class="nav">
 
-            <div class="dropdown" style="margin:0 0 0 13%">
-                <button class="btn  dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Courses
-                </button>
-                <div class="dropdown-menu " aria-labelledby="dropdownMenu2">
-                    <button class="dropdown-item" type="button">Website Development</button>
-                    <button class="dropdown-item " type="button">CSS</button>
-                    <button class="dropdown-item" type="button">Something else here</button>
-                </div>
+             
+                <ul >
+                    <li><a href='#'>Course</a>
+                        <ul>
+                            <li><a href='#'>.Net Courses</a></li>
+                            <li><a href='#'>Microsoft Office Courses</a></li>
+                            <li><a href='#'>SQL Courses</a></li>
+                            <li><a href='#'>Corporate Trainig</a></li>
+                        </ul>
+                    </li>
+                    <li><a href='#'>About</a>
+                        <ul>
+                            <li><a href='#'>.Net Courses</a></li>
+                            <li><a href='#'>Microsoft Office Courses</a></li>
+                            <li><a href='#'>SQL Courses</a></li>
+                            <li><a href='#'>Corporate Trainig</a></li>
+                        </ul>
+                    </li>
+                    <li><a href='#'>Lecturers</a>
+                        <ul>
+                            <li><a href='#'>.Net Courses</a></li>
+                            <li><a href='#'>Microsoft Office Courses</a></li>
+                            <li><a href='#'>SQL Courses</a></li>
+                            <li><a href='#'>Corporate Trainig</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
+            
 
+         
             <div class="navbar-text">
 
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target=".navbar-collapse">
@@ -71,7 +92,7 @@
                 </button>
             </div>
 
-            <div class="collapse navbar-collapse" id="navbarResponsive">
+            @*<div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                     @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
@@ -84,10 +105,15 @@
                     </li>
                 </ul>
 
-            </div>
+            </div>*@
             <div>
 
-                <button class="btn btn-outline-blue-grey account-btn wow tada " data-wow-delay="3s" style=""> @Html.ActionLink("Signup", "Signup", "Account") / <span style="">@Html.ActionLink("Have an Account?", "SignIn", "Account")</span> </button>
+                <button class="btn btn-outline-blue-grey account-btn wow tada " data-wow-delay="3s">
+                    <strong style="color: white">@Html.ActionLink("Signup", "Signup", "Account", null, new {@class= "signInSignUp-btn" }) / </strong>
+                    <span style="">
+                        <strong> @Html.ActionLink("Have an Account?", "SignIn", "Account", null, new {@class = "signInSignUp-btn" })</strong>
+                    </span>
+                </button>
 
             </div>
           
@@ -134,7 +160,7 @@
       <script src="~/Scripts/smoothscroll.js"></script>
       <script src="~/Scripts/wow.min.js"></script>
       <script src="~/Scripts/custom.js"></script>
-
+      <script src="~/Scripts/JavaScript.js"></script>
       <script src="~/Scripts/jquery-1.10.2.min.js"></script>
       <script src="~/Scripts/bootstrap.min.js"></script>
   }
