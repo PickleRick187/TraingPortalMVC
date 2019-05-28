@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TrainingPortal.Models.Course>
+﻿@model IEnumerable<TrainingPortal.Models.CourseView>
 
 @{
     Layout = null;
@@ -13,7 +13,7 @@
 </head>
 <body>
     <p>
-        @Html.ActionLink("Create New", "Create")
+        @Html.ActionLink("Create New", "CreateCourse")
     </p>
     <table class="table">
         <tr>
@@ -32,9 +32,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.ImageMimeType)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Catalog.CatalogID)
-            </th>
+         
             <th></th>
         </tr>
     
@@ -55,9 +53,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.ImageMimeType)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Catalog.CatalogID)
-            </td>
+          
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id=item.CourseID }) |
                 @Html.ActionLink("Details", "Details", new { id=item.CourseID }) |

@@ -1,10 +1,15 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
 namespace TrainingPortal.Models
 {
-    public class CourseMetaData
+    public class CourseView
     {
+        public CourseView()
+        {
+            this.EnrollmentViews = new HashSet<EnrollmentView>();
+        }
 
         [Key]
         public int CourseID { get; set; }
@@ -27,10 +32,10 @@ namespace TrainingPortal.Models
         [MaxLength]
         public byte[] PhotoFile { get; set; }
     
-        [HiddenInput(DisplayValue = false)]
+   
         public string ImageMimeType { get; set; }
 
-        //public virtual Catalog Catalog { get; set; }
-
+        public virtual CatalogView CatalogView { get; set; }
+        public ICollection<EnrollmentView> EnrollmentViews { get; set; }
     }
 }

@@ -6,15 +6,16 @@
 }
 
 
-<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:600'>
 
-<link href="~/Content/SignIn/SignInStyle.css" rel="stylesheet" />
+@*<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:600'>*@
+
+@*<link href="~/Content/SignIn/SignInStyle.css" rel="stylesheet" />*@
 
 @using (Html.BeginForm())
 {
  @Html.AntiForgeryToken()
     @*@Html.ValidationSummary(true, "Log in was unsuccessful.")*@
-    <div class="login-wrap">
+    @*<div class="login-wrap">
         <div class="login-html">
             <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab" onclick="hideSignUp()" style="margin-left: 20%">Sign In</label>
             <input id="tab-2" type="radio" name="tab" class="sign-up" onclick="tabSignUpButton">  <label for="tab-2" class="tab"></label>
@@ -62,12 +63,12 @@
                     </div>*@
                     
                     
-                    <div class="form-group">
+                    @*<div class="form-group">
                         @Html.LabelFor(model => model.RememberMe, htmlAttributes: new { @class = "control-label " })
                         <div class="col-md-10">
                             <div class="checkbox">
                                 @Html.EditorFor(model => model.RememberMe)
-                                @Html.ValidationMessageFor(model => model.RememberMe, "", new { @class = "text-danger" })
+                               
                             </div>
                         </div>
                     </div>
@@ -95,14 +96,61 @@
 
 
 
-            </div>
+            </div>*@
 
             @*@section Scripts {
                     @Scripts.Render("~/bundles/jqueryval")
                 }*@
 
-        </div>
-    </div>
+        @*</div>
+    </div>*@
+
+
+
+    <div class="container" style="box-shadow: 4px 11px 13px 10px black; width:50%; border-radius: 10px; margin-top: 200px; padding-left: 3%; padding-bottom: 1%; padding-top: 1%;">
+
+            <h2 style="text-align:center; color:coral">LOG IN</h2>
+            
+            @*<div class="form-group">
+                <label for="inputEmail">Email address</label>
+                <input type="email" runat="server" value="" class="form-control" id="inputEmail" placeholder="email@example.com" required>
+            </div>*@
+            
+         
+            <div class="form-group col-md-8">
+                @Html.LabelFor(model => model.StudentEmail, htmlAttributes: new { @class = "control-label " })
+                @Html.EditorFor(model => model.StudentEmail, new {htmlAttributes = new {@class = "form-control", PlaceHolder = "email@example.com"}})
+                @Html.ValidationMessageFor(model => model.StudentEmail, "", new {@class = "text-danger"})
+                
+            </div>
+            
+            
+            
+
+
+            @*<div class="form-group">
+                <label for="inputPassword">Password</label>
+                <input type="password" runat="server" value="" class="form-control" id="inputPassword" placeholder="Password" required>
+            </div>*@
+            <div class="form-group col-md-8">
+                @Html.LabelFor(model => model.StudentPassword, htmlAttributes: new { @class = "control-label " })
+                @Html.EditorFor(model => model.StudentPassword, new {htmlAttributes = new {@class = "form-control", PlaceHolder = "Passsword"}})
+                @Html.ValidationMessageFor(model => model.StudentPassword, "", new {@class = "text-danger"})
+            </div>
+
+            <button type="submit" class="btn btn-outline-danger" style="margin-left: 2%; " >Sign in</button>
+            <br />
+        
+            <br />
+            <hr />
+            
+         
+            <a>New around here?    @Html.ActionLink("Sign up", "Signup") </a> 
+      </div>
+        
+        
+
+
 
     <script src="~/Scripts/jquery-3.3.1.min.js"></script>
     <script src="~/Scripts/jquery.validate.min.js"></script>

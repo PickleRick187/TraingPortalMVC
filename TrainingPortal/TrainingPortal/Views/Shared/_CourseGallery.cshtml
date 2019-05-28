@@ -1,7 +1,8 @@
-﻿@model ICollection<TrainingPortal.Models.CourseMetaData>
+﻿@model ICollection<TrainingPortal.Models.CourseView>
+
 
 <!--slide show-->
-<h2 style="margin-top: 16px; ">Recent Courses</h2>
+<h2 style="margin-top: 56px; ">Recent Courses</h2>
 <div class="slide-row">
     <!-- /.col-lg-3 -->
     <div class="slide-col-lg-9">
@@ -32,10 +33,11 @@
                                         }
 
                                         <h5>@item.CourseName</h5>
-                                        <p>@item.CourseDescription</p>
+                                       
                                         <p> @item.CoursePrice</p>
 
-                                        @Html.ActionLink("Details", "_CourseDetails", new { id = item.CourseID }, null)
+                                        @Html.ActionLink("Details", "_CourseDetails", new { id = item.CourseID}, null)
+                                  
                                     </div>
                                     <div class="card-footer">
                                         <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>

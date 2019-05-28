@@ -9,36 +9,38 @@ using System.Web.Mvc;
 using TrainingPortal.DAL;
 using TrainingPortal.BLL.Interfaces;
 using TrainingPortal.BLL;
+using TrainingPortal.BLL.Repositories;
+using TrainingPortal.Models;
 
 
 namespace TrainingPortal.Controllers
 {
     public class AddCourseController : Controller
     {
-        private readonly ICourseRepository courseRepository;
-
-        private TrainingPortalEntities db = new TrainingPortalEntities();
-
+        private UnitOfWork _unitOfWork;
         public AddCourseController()
         {
-            this.courseRepository = new CourseRepository(new TrainingPortalEntities());
+            this._unitOfWork = new UnitOfWork(new TrainingPortalEntities());
         }
 
 
-        public async Task<ActionResult> Course()
+        public ActionResult Course()
         {
-            return View(await db.Courses.ToListAsync());
+            var query = _unitOfWork.Courses.GetCollection();
+            ICollection<CourseView> course = new List<CourseView>();
+            var courseMap = AutoMapper.Mapper.Map(query, course);
+            return View(courseMap);
         }
 
 
 
-        public ActionResult CreateCourse()
+        public ActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult CreateCourse([Bind(Exclude = "Enrollments, ImageMimeType")]Course courseDetail, HttpPostedFileBase image)
+        public ActionResult Create(Course courseDetail, HttpPostedFileBase image)
         {
 
             if (image == null)
@@ -65,12 +67,14 @@ namespace TrainingPortal.Controllers
                         //courseRepository.InsertCourse(courseDetail, image);
                         Course course = new Course
                         {
-                            ImageMimeType = image.ContentType,
-                            PhotoFile = new byte[image.ContentLength]
+                            PhotoFile = new byte[image.ContentLength],
+                            ImageMimeType = image.ContentType
+                            
                         };
                         image.InputStream.Read(course.PhotoFile, 0, image.ContentLength);
-                        db.Courses.Add(course);
-                        db.SaveChanges();
+                         _unitOfWork.Courses.Add(course);
+                         _unitOfWork.Complete();
+                        //await _unitOfWork.CompleteAsync();
                         return RedirectToAction("Course");
                     }
 
@@ -85,13 +89,15 @@ namespace TrainingPortal.Controllers
 
 
         // GET: Admin/Delete/5
-        public async Task<ActionResult> DeleteCourse(int? id)
+        public ActionResult DeleteCourse(int id)
         {
-            if (id == null)
+            Course courseDetail = _unitOfWork.Courses.GetByID(id);
+
+            if (courseDetail == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Course courseDetail = await db.Courses.FindAsync(id);
+            
             if (courseDetail == null)
             {
                 return HttpNotFound();
@@ -102,26 +108,26 @@ namespace TrainingPortal.Controllers
         // POST: Admin/Delete/5
         [HttpPost, ActionName("DeleteCourse")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteCourseConfirmed(int id)
+        public  ActionResult DeleteCourseConfirmed(int id)
         {
-            Course courseDetail = await db.Courses.FindAsync(id);
-            db.Courses.Remove(courseDetail);
-            await db.SaveChangesAsync();
+            Course courseDetail = _unitOfWork.Courses.GetByID(id);
+            _unitOfWork.Courses.Remove(courseDetail);
+            _unitOfWork.Complete();
             return RedirectToAction("Course");
         }
 
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            var get = db.Courses.Find(id);
+            Course courseDetail = _unitOfWork.Courses.GetByID(id);
 
-            return View(get);
+            return View(courseDetail);
         }
 
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit( Course course, HttpPostedFileBase image)
+        public ActionResult Edit(Course course, HttpPostedFileBase image)
         {
             if (ModelState.IsValid)
             {
@@ -134,8 +140,8 @@ namespace TrainingPortal.Controllers
 
                 }
 
-                db.Entry(course).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+              _unitOfWork.Courses.UpdatEntity(course);
+              _unitOfWork.Complete();
                 return RedirectToAction("Course");
             }
             return View(course);

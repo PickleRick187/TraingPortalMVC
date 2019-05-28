@@ -45,6 +45,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=8.1.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.8.1.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -116,6 +119,7 @@
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\fonts\LICENSE.txt" />
     <Content Include="Content\fonts\OFL.txt" />
+    <Content Include="Content\Images\autoCad.jpg" />
     <Content Include="Content\Images\Courses\3 csharp-e7b8fcd4ce.png" />
     <Content Include="Content\Images\Courses\5 jquery-c93ba170c1.png" />
     <Content Include="Content\Images\Courses\6 nodejs-601628d09d.png" />
@@ -131,20 +135,35 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\csharp.png" />
     <Content Include="Content\group-policy-administration-ee0dacafe8.png" />
+    <Content Include="Content\Images\dataScience.jpg" />
     <Content Include="Content\Images\EOH Red Logo.png" />
     <Content Include="Content\Images\eoh-1078.jpg" />
     <Content Include="Content\Images\Eoh-Brand Red Background White font.jpg" />
     <Content Include="Content\Images\Eoh-Brand Red Background.jpg" />
     <Content Include="Content\Images\Eoh-Brand White Background.jpg" />
     <Content Include="Content\Images\eoh-brand-white-text.png" />
+    <Content Include="Content\Images\EOHLogo2.jpg" />
     <Content Include="Content\Images\EOHMessage.jpg" />
+    <Content Include="Content\Images\graphic design template.jpg.png" />
+    <Content Include="Content\Images\graphicDesign.jpg" />
+    <Content Include="Content\Images\graphicDesignTemplate.png" />
     <Content Include="Content\Images\Group 11.png" />
     <Content Include="Content\Images\LearnerEohLogo.png" />
     <Content Include="Content\Images\LearnerHomePage\Office-Day%402x.png" />
     <Content Include="Content\Images\LearnerHomePage\Symbol 9 – 1.png" />
+    <Content Include="Content\Images\paymentImage.png" />
+    <Content Include="Content\Images\programming borchure.jpg" />
+    <Content Include="Content\Images\programming.jpg" />
+    <Content Include="Content\Images\programmingBorchure.jpg" />
     <Content Include="Content\Images\SignIn\EOH2.png" />
     <Content Include="Content\Images\SignIn\EOH_Image01-1080x583.png" />
+    <Content Include="Content\Images\sql brochure.jpg" />
+    <Content Include="Content\Images\sqlBrochure.jpg" />
+    <Content Include="Content\Images\sqlDatabase.jpg" />
     <Content Include="Content\Images\Updatedsyntxicons.png" />
+    <Content Include="Content\Images\web design brochure.png" />
+    <Content Include="Content\Images\webDesign.jpg" />
+    <Content Include="Content\Images\webDesignB.png" />
     <Content Include="Content\mdb.min.css" />
     <Content Include="Content\SignedInHomePage.css" />
     <Content Include="Content\SignIn\SignInStyle.css" />
@@ -258,7 +277,14 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Catalog.cs" />
+    <Compile Include="Models\LecturerView.cs" />
+    <Compile Include="Models\PaymentTypeView.cs" />
+    <Compile Include="Models\Training.cs" />
     <Compile Include="Models\Course.cs" />
+    <Compile Include="Models\Enrollment.cs" />
+    <Compile Include="Models\Infrastructure\AutoMapperDbProfile.cs" />
+    <Compile Include="Models\TrainingTypeView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -282,7 +308,7 @@
     <Content Include="Views\Shared\SearchedCourse.cshtml" />
     <Content Include="Views\Shared\SignInSignUp.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
-    <Content Include="Views\Portal\_CourseDetails.cshtml" />
+    <Content Include="Views\Portal\_CourseDetail.cshtml" />
     <Content Include="Views\Shared\_CourseGallery.cshtml" />
     <Content Include="Views\Shared\_Courses.cshtml" />
     <Content Include="Views\Shared\_SideNav.cshtml" />
@@ -294,6 +320,13 @@
     <Content Include="Views\AddCourse\CreateCourse.cshtml" />
     <Content Include="Views\AddCourse\Edit.cshtml" />
     <Content Include="Views\AddCourse\Course.cshtml" />
+    <Content Include="Views\AddCourse\Create.cshtml" />
+    <Content Include="Views\Portal\_CourseDetails.cshtml" />
+    <Content Include="Views\Shared\_CourseLayout.cshtml" />
+    <Content Include="Views\Home\Programming.cshtml" />
+    <Content Include="Views\Home\CsharpCourse.cshtml" />
+    <Content Include="Views\Home\Purchase.cshtml" />
+    <Content Include="Views\Home\ThankYouForPurchasing.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -321,6 +354,10 @@
     <ProjectReference Include="..\TrainingPortal.DAL\TrainingPortal.DAL.csproj">
       <Project>{416c7006-54f3-4493-8f24-350122b9aa15}</Project>
       <Name>TrainingPortal.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TrainingPortalDomain\TrainingPortalDomain.csproj">
+      <Project>{cca61f5a-3e7c-40d1-9981-0fb1debe8f53}</Project>
+      <Name>TrainingPortalDomain</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

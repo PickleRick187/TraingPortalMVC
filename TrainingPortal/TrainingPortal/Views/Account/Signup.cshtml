@@ -25,19 +25,19 @@ else
     using (Html.BeginForm("Signup", "Account", FormMethod.Post))
     {
 
-        <div  >
+        <div class="container" >
  
-            <div class="login-wrap-SignUp" style="margin-left: 28%" >
+            <div class=" login-wrap-SignUp" style=" margin-left: 10%; margin-top: 120px; background: black;  width:80%; padding: 1%; border-radius: 20px; " >
                 <div style=" margin: 5% auto 0px auto; width:90%;">
         
                     <h4 style="color: white" align="center">Create Your Student Account</h4>
                     <hr color="#ff3547">
 
                     <div class="googleSignInButton" style="text-align: center">
-                        <button style=" font-weight: bold;background:white; color:white; " type="submit" class="btn btn-danger">SIGN UP WITH GOOGLE</button>
+                        <button style=" font-weight: bold; color:white; " type="submit" class="btn btn-danger">SIGN UP WITH GOOGLE</button>
                     </div>
                     <br>
-                    <div class="facebookSignInButton" style="text-align: center"><button style=" font-weight: bold; background:white; color:white;" type="submit" class="btn btn-danger">SIGN UP WITH FACEBOOK</button></div>
+                    <div class="facebookSignInButton" style="text-align: center"><button style=" font-weight: bold;  color:white;" type="submit" class="btn btn-danger">SIGN UP WITH FACEBOOK</button></div>
                     <br>
                     <h4 style="text-align: center">OR</h4>
                     <hr color="#ff3547">
@@ -47,23 +47,26 @@ else
                     <div class="form-row">
 
                         <div class="form-group col-md-6">
-                            @Html.EditorFor(model => model.StudentFirstName, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "First Name" } })
-                            @Html.ValidationMessageFor(model => model.StudentFirstName, "", new { @class = "text-danger" })
+             
+                            @Html.EditorFor(model => model.StudentFirstName, new {htmlAttributes = new {@class = "form-control", PlaceHolder = "First Name"}})
+                            @Html.ValidationMessageFor(model => model.StudentFirstName, "", new {@class = "text-danger"})
                         </div>
 
 
 
                         <div class="form-group col-md-6">
-                            @Html.EditorFor(model => model.StudentLastName, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Last Name" } })
-                            @Html.ValidationMessageFor(model => model.StudentLastName, "", new { @class = "text-danger" })
+                      
+                            @Html.EditorFor(model => model.StudentLastName, new {htmlAttributes = new {@class = "form-control", PlaceHolder = "Last Name"}})
+                            @Html.ValidationMessageFor(model => model.StudentLastName, "", new {@class = "text-danger"})
                         </div>
                     </div>
                     
                     
                     <div class="form-group">
-                        @Html.EditorFor(model => model.StudentEmail, new { htmlAttributes = new { @class = "form-control", @id = "form-control", PlaceHolder = "Email" } })
-                        @Html.ValidationMessageFor(model => model.StudentEmail, "", new { @class = "text-danger" })
-                        @Html.ValidationMessage("EmailExist", new { @class = "text-danger" })
+                   
+                        @Html.EditorFor(model => model.StudentEmail, new {htmlAttributes = new {@class = "form-control", @id = "form-control", PlaceHolder = "email@example.com"}})
+                        @Html.ValidationMessageFor(model => model.StudentEmail, "", new {@class = "text-danger"})
+                        @Html.ValidationMessage("EmailExist", new {@class = "text-danger"})
 
                     </div>
 
@@ -71,13 +74,14 @@ else
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            @Html.EditorFor(model => model.StudentPassword, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Password" } })
-                            @Html.ValidationMessageFor(model => model.StudentPassword, "", new { @class = "text-danger" })
+                            @Html.EditorFor(model => model.StudentPassword, new {htmlAttributes = new {@class = "form-control", PlaceHolder = "Password"}})
+                            @Html.ValidationMessageFor(model => model.StudentPassword, "", new {@class = "text-danger"})
                         </div>
 
                         <div class="form-group col-md-6">
-                            @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Confirm Password" } })
-                            @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                    
+                            @Html.EditorFor(model => model.ConfirmPassword, new {htmlAttributes = new {@class = "form-control", PlaceHolder = "Confirm Password"}})
+                            @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new {@class = "text-danger"})
                         </div>
                     </div>
 

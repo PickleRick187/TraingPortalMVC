@@ -1,4 +1,4 @@
-﻿@model TrainingPortal.DAL.Student
+﻿@model TrainingPortal.Models.Portal
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,29 +19,67 @@
         @Scripts.Render("~/bundles/modernizr")*@
     <script src="~/Scripts/jquery-3.3.1.js"></script>
     <style>
-        .nav-font {
-            margin-left: 1%
-        }
+    
     </style>
 </head>
 <body>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="signed-nav">
+    <nav  style="    filter: blur(120px);
+    transform: scale(1.3);
+    background: linear-gradient(90deg, red, blue);
+    background-size: 90% 100%;
+    " class="navbar navbar-expand-lg navbar-light fixed-top" id="signed-nav">
         <div class="container">
 
             <div class="navbar-logo ">
                 <img src="~/Content/Images/LearnerEohLogo.png" />
             </div>
 
-            @Html.ActionLink("Training Portal", "Index", "Home", new { area = "" }, new { @class = " nav-font" })
+            @Html.ActionLink("Portal", "UserHome", "Portal", new { id = Model.StudentID }, new { @class = " nav-font" })
+            
+            
+            <div class="nav" style="margin-top: 10px;">
 
-            <p style="position: absolute;margin-left:45%;">
+             
+                <ul >
+                    <li><a href='#'>Course</a>
+                        <ul>
+                            <li><a href='#'>.Net Courses</a></li>
+                            <li>@Html.ActionLink("Programming Courses", "Programming", "Home")</li>
+                            <li><a href='#'>SQL Courses</a></li>
+                            <li><a href='#'>Corporate Trainig</a></li>
+                        </ul>
+                    </li>
+                    <li><a href='#'>About</a>
+                        <ul>
+                            <li><a href="#">EOH Training </a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Programming Brochure</a></li>
+                            <li><a href="#">Web Design Brochure</a></li>
+                            <li><a href="#">SQL Brochure</a></li>
+                            <li><a href="#">Graphic Design Brochure</a></li>
+                        
+                            <li><a href="#">International Certifications</a></li>
+                        </ul>
+                    </li>
+                    <li><a href='#'>Lecturers</a>
+                        <ul>
+                            <li><a href='#'>.Net Courses</a></li>
+                            <li><a href='#'>Microsoft Office Courses</a></li>
+                            <li><a href='#'>SQL Courses</a></li>
+                            <li><a href='#'>Corporate Trainig</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <p id="personalInfo">
                 @Html.ActionLink("Personal Information", "PersonalInfo", "Portal", new { id = Model.StudentID }, null)
 
             </p>
          
-            <p style="margin-top: 30px; margin-left: 80%; font-size: 1.1em;">
+            <p id="welcome-text">
                 Welcome @HttpContext.Current.User.Identity.Name
             </p>
             <div id="Nav-UserName" style="margin-left: 90%;">
@@ -137,7 +175,7 @@
     <script src="~/Scripts/smoothscroll.js"></script>
     <script src="~/Scripts/wow.min.js"></script>
     <script src="~/Scripts/custom.js"></script>
-
+    <script src="~/Scripts/JavaScript.js"></script>
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
 }

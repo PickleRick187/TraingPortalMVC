@@ -41,7 +41,6 @@ textarea {
     background-color: #ffffff;
     color: #EEA200;
     padding: 24px 10px;
-
 } 
 
 .active-pink-2{
@@ -248,7 +247,8 @@ nav#mainNav {
         font-size: 3.9em;
         text-shadow: 0 0 20px black;
         color: white;
-        background-color: rgba(0, 0, 0, 0.45);
+        background-color: rgba(0, 0, 0, 0.4);
+        border-radius: 9px;
     }
 
     @font-face {
@@ -256,21 +256,23 @@ nav#mainNav {
         src: url('fonts/GreatVibes-Regular.ttf') format('truetype');
     }
 
-    #home-text {
-        position: relative;
-        text-align: center;
-        /*text-shadow: 5px 5px 7px #1000ff;
+#home-text {
+    position: relative;
+    text-align: center;
+    /*text-shadow: 5px 5px 7px #1000ff;
     color: #ffefef;*/
-        margin: auto;
-        margin-top: 30px;
-        width: auto;
-        font-family: GreatVibes-Regular;
-        text-shadow: 20px #131d29;
-        font-size: 1.9em;
-        text-shadow: 0 0 20px black;
-        color: white;
-        background-color: rgba(0, 0, 0, 0.45)
-    }
+    margin: auto;
+    margin-top: 30px;
+    width: auto;
+    font-family: GreatVibes-Regular;
+    text-shadow: 20px #131d29;
+    font-size: 1.9em;
+    text-shadow: 0 0 20px black;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.45);
+    border-radius: 9px;
+    width: 80%;
+}
 
     @font-face {
         font-family: 'CabinSketch-Bold';
@@ -392,18 +394,36 @@ nav#mainNav {
     }
 
 
+footer {
+    background-color: black;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 30px;
+    height: 100%;
+    margin-bottom: -10%;
+    margin-left: 0%;
+    width: 101.3%;
+}
+@media(max-width: 1535px) {
     footer {
-        background-color: #0d1218;
-        padding: 0 10% 0 15%;
-        padding-top: 30px;
-        height: 100%;
-        margin-bottom: -10%;
-        width: 101.3% !important;
+        width: 70%;
+        
     }
+}
 
-        footer > p {
-            align-content: left;
-        }
+
+/*footer {
+    
+    margin-top: 9%;
+    background-color: #0d1218;
+    padding: 0 10% 0 15%;
+    padding-top: 30px;
+    height: 100%;
+    margin-bottom: 0px;
+}*/
+footer > p {
+    align-content: left;
+}
 
 
     .account-btn {
@@ -433,160 +453,160 @@ nav#mainNav {
 
 
 
-    .signInSignUp-btn{
+    .signInSignUp-btn {
         color: white;
     }
 
         .signInSignUp-btn:hover {
-           
-            color: #ce0012!important;
-            
+            color: #ce0012 !important;
         }
 
-    
 
 
 
-.nav a {
-    text-decoration: none;
-}
 
-.nav {
-    height: 100%;
-    background: #0000007d;
-    position: relative;
-}
+    .nav a {
+        text-decoration: none;
+    }
 
-
-
-    .nav > ul {
+    .nav {
+        height: 100%;
+        background: #00000000;
         position: relative;
-        list-style: none;
-        padding: 0;
-        margin: 0;
     }
 
 
-        .nav > ul > li > ul {
-            position: absolute;
-            left: 0;
+
+        .nav > ul {
+            position: relative;
+            list-style: none;
             padding: 0;
             margin: 0;
-            list-style: none;
         }
 
 
-
-
-
-        .nav > ul > li:hover > ul li a {
-            opacity: 15;
-            height: 50px;
-            transition: all .3s linear;
-            -o-transition: all .3s linear;
-            -moz-transition: all .3s linear;
-            -webkit-transition: all .3s linear;
-            background: #000000d9;
-        }
-
-        .nav > ul > li > ul a {
-            display: block;
-            color: whitesmoke;
-            width: 150px;
-            line-height: 50px !important;
-            font: 700 12px 'pt sans',sans-serif;
-            background: #eee;
-            border-bottom: 1px solid #ddd;
-            text-align: center;
-            padding: 0 5px;
-            height: 0;
-            overflow: hidden;
-            opacity: 0;
-            transition: all .3s linear .2s;
-            -o-transition: all .3s linear .2s;
-            -moz-transition: all .3s linear .2s;
-            -webkit-transition: all .3s linear .2s;
-        }
-
-        .nav > ul > li {
-            float: left;
-            position: relative;
-        }
-
-            .nav > ul > li > a {
-                padding: 0 20px;
-                color: #fff;
-                display: block;
-                line-height: 70px !important;
-                font: 400 11px 'PT Sans', sans-serif;
-                text-transform: uppercase;
-                text-decoration: none;
+            .nav > ul > li > ul {
+                position: absolute;
+                left: 0;
+                padding: 0;
+                margin: 0;
+                list-style: none;
             }
 
 
 
-.lamp span {
-    display: block;
-    height: 4px;
-    background: #ee6666;
-    position: relative;
-}
 
-    .lamp span:after {
-        bottom: 100%;
-        left: 50%;
-        border: solid transparent;
-        content: " ";
-        height: 0;
-        width: 0;
-        position: absolute;
-        pointer-events: none;
-        border-color: rgba(238, 102, 102, 0);
-        border-bottom-color: #ee6666;
-        border-width: 4px;
-        margin-left: -4px;
+
+            .nav > ul > li:hover > ul li a {
+                opacity: 15;
+                height: 50px;
+                transition: all .3s linear;
+                -o-transition: all .3s linear;
+                -moz-transition: all .3s linear;
+                -webkit-transition: all .3s linear;
+                background: #000000d9;
+            }
+
+            .nav > ul > li > ul a {
+                display: block;
+                color: whitesmoke;
+                width: 150px;
+                line-height: 50px !important;
+                font: 700 12px 'pt sans',sans-serif;
+                background: #eee;
+                border-bottom: 1px solid #ddd;
+                text-align: center;
+                padding: 0 5px;
+                height: 0;
+                overflow: hidden;
+                opacity: 0;
+                transition: all .3s linear .2s;
+                -o-transition: all .3s linear .2s;
+                -moz-transition: all .3s linear .2s;
+                -webkit-transition: all .3s linear .2s;
+            }
+
+            .nav > ul > li {
+                float: left;
+                position: relative;
+            }
+
+                .nav > ul > li > a {
+                    padding: 0 20px;
+                    color: #fff;
+                    display: block;
+                    line-height: 70px !important;
+                    font: 400 11px 'PT Sans', sans-serif;
+                    text-transform: uppercase;
+                    text-decoration: none;
+                }
+
+                    .nav > ul > li > a:hover {
+                        text-shadow: 2px 4px 4px #0008ff;
+                    }
+
+    .lamp span {
+        display: block;
+        height: 4px;
+        background: #ee6666;
+        position: relative;
     }
 
-.lamp {
-    position: absolute !important;
-    height: 4px;
-    top: 66px;
-    background: #333;
-    transition: all .3s linear;
-    -o-transition: all .3s linear;
-    -moz-transition: all .3s linear;
-    -webkit-transition: all .3s linear;
-}
+        .lamp span:after {
+            bottom: 100%;
+            left: 50%;
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+            border-color: rgba(238, 102, 102, 0);
+            border-bottom-color: #ee6666;
+            border-width: 4px;
+            margin-left: -4px;
+        }
+
+    .lamp {
+        position: absolute !important;
+        height: 4px;
+        top: 66px;
+        background: #333;
+        transition: all .3s linear;
+        -o-transition: all .3s linear;
+        -moz-transition: all .3s linear;
+        -webkit-transition: all .3s linear;
+    }
 
 
 
-.blog-link {
-    color: #fff;
-    text-decoration: none;
-    background: #eee;
-    background-size: 40px;
-    line-height: 50px;
-    display: inline-block;
-    padding: 0 10px;
-    border-radius: 4px;
-    border-bottom: 3px solid #ddd;
-    color: #333;
-    font-family: 'open sans',sans-serif;
-    margin: 10px;
-}
+    .blog-link {
+        color: #fff;
+        text-decoration: none;
+        background: #eee;
+        background-size: 40px;
+        line-height: 50px;
+        display: inline-block;
+        padding: 0 10px;
+        border-radius: 4px;
+        border-bottom: 3px solid #ddd;
+        color: #333;
+        font-family: 'open sans',sans-serif;
+        margin: 10px;
+    }
 
-.dgithub {
-    color: #fff;
-    text-decoration: none;
-    background: #eee url('https://lh6.googleusercontent.com/-MOW-T0KLZJI/UyR6EIggYkI/AAAAAAAAEbM/el92Uoxz-aI/s50-no/GitHub-Mark.png') no-repeat;
-    background-size: 40px;
-    line-height: 50px;
-    display: inline-block;
-    padding: 0 10px 0 50px;
-    background-position: 5px;
-    border-radius: 4px;
-    border-bottom: 3px solid #ddd;
-    color: #333;
-    font-family: 'open sans',sans-serif;
-    margin: 10px;
-}
+    .dgithub {
+        color: #fff;
+        text-decoration: none;
+        background: #eee url('https://lh6.googleusercontent.com/-MOW-T0KLZJI/UyR6EIggYkI/AAAAAAAAEbM/el92Uoxz-aI/s50-no/GitHub-Mark.png') no-repeat;
+        background-size: 40px;
+        line-height: 50px;
+        display: inline-block;
+        padding: 0 10px 0 50px;
+        background-position: 5px;
+        border-radius: 4px;
+        border-bottom: 3px solid #ddd;
+        color: #333;
+        font-family: 'open sans',sans-serif;
+        margin: 10px;
+    }

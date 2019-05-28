@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=8.1.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.8.1.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -47,11 +50,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CourseRepository.cs" />
+    <Compile Include="DbContext\TpContext.cs" />
     <Compile Include="Interfaces\ICourseRepository.cs" />
+    <Compile Include="Interfaces\IPaymentRepository.cs" />
     <Compile Include="Interfaces\IQueryStudentEmail.cs" />
+    <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IStudentRepository.cs" />
+    <Compile Include="Interfaces\IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryStudentByEmail.cs" />
+    <Compile Include="Repositories\CourseRepository.cs" />
+    <Compile Include="Repositories\PaymentRepository.cs" />
+    <Compile Include="Repositories\Repository.cs" />
+    <Compile Include="Repositories\StudentRepository.cs" />
+    <Compile Include="Repositories\UnitOfWork.cs" />
     <Compile Include="Security\Crypto.cs" />
     <Compile Include="StudentRepository.cs" />
   </ItemGroup>
@@ -60,6 +72,13 @@
       <Project>{416c7006-54f3-4493-8f24-350122b9aa15}</Project>
       <Name>TrainingPortal.DAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TrainingPortalDomain\TrainingPortalDomain.csproj">
+      <Project>{cca61f5a-3e7c-40d1-9981-0fb1debe8f53}</Project>
+      <Name>TrainingPortalDomain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

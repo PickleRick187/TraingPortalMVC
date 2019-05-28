@@ -1,4 +1,4 @@
-﻿@model TrainingPortal.Models.Course
+﻿@model TrainingPortal.Models.CourseView
 
 @{
     Layout = null;
@@ -33,13 +33,13 @@
             </div>
         </div>
         
-        <div class="col-md-10">
+        @*<div class="col-md-10">
             @Html.LabelFor(model => model.Catalog, new { htmlAttributes = new { @class = "form-control" } })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Catalog, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Catalog, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
     </div>
 
            
@@ -87,6 +87,7 @@
                   
                     @Html.ValidationMessageFor(model => model.PhotoFile, "", new { @class = "text-danger" })
                 </div>
+              
             </div>
             
             @ViewBag.Message

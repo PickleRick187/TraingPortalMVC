@@ -1,0 +1,153 @@
+﻿@model TrainingPortal.Models.PaymentTypeView
+
+<html lang="en">
+<head runat="server">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Payment</title>
+
+
+    <style>
+        .carousel-item {
+            height: 700px
+        }
+
+        .nav-link {
+            color: white
+        }
+
+        body {
+            background: #0D1218;
+            color: white
+        }
+
+        .btn-outline-danger {
+            color: white
+        }
+
+        h1 {
+            color: white
+        }
+
+        h3 {
+            color: white
+        }
+
+        btn btn-danger my-2 my-sm-0 {
+            color: white
+        }
+
+        .navbar navbar-expand-lg navbar-light bg-light {
+            background-color: #0D1218 !important
+        }
+    </style>
+
+
+</head>
+<body>
+
+
+    <header></header>
+
+    @using (Html.BeginForm("Purchase", "Home", FormMethod.Post))
+    {
+
+        <div class="container" style="background: #0D1218; box-shadow: 4px 11px 13px 10px black; margin-top: 50px;">
+            <p style="text-align:center"><img style="width:200px" class="center" src="~/Content/Images/paymentImage.png" /></p>
+            <br>
+
+            <h4 style="color: white; text-align: center">Credit Card Payment</h4>
+            <hr color="#ff3547">
+
+            <div class="form-row" style="margin-left: 15%;">
+
+
+
+
+
+                <div class="form-group col-md-6">
+                    @Html.LabelFor(model => model.CardNumber, htmlAttributes: new { @class = "control-label " })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.CardNumber, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CardNumber, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @*<div class="form-group col-md-6">
+            <label for="inputCardNumber">Card Number</label>
+            <input type="text" class="form-control" id="inputCardNumber" required>
+        </div>*@
+
+
+                <div class="form-group col-md-6">
+                    @Html.LabelFor(model => model.CardHolderName, htmlAttributes: new { @class = "control-label " })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.CardHolderName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CardHolderName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @*<div class="form-group col-md-6">
+            <label for="inputCardHolderName">Card Holder Name</label>
+            <input type="text" class="form-control" id="inputCardHolderName" required>
+        </div>*@
+
+
+
+
+                <div class="form-group col-md-6">
+                    @Html.LabelFor(model => model.ExpiryDate, htmlAttributes: new { @class = "control-label " })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ExpiryDate, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ExpiryDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @*<div class="form-group col-md-6">
+            <label for="inputExpiryDate">Expiry Date</label>
+            <input type="date" class="form-control" id="inputExpiryDate" required>
+        </div>*@
+
+
+          
+
+                <div class="form-group col-md-6">
+                    @Html.LabelFor(model => model.CardSecurityCode, htmlAttributes: new { @class = "control-label " })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.CardSecurityCode, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CardSecurityCode, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @*<div class="form-group col-md-6">
+            <label for="inputCardSecurityCode">Card Security Code</label>
+            <input type="password" class="form-control" id="inputCardSecurityCode" required>
+        </div>*@
+
+            </div>
+            <button style="background:#ff3547; margin-bottom: 20px; margin-left: 44%; " type="submit" class="btn btn-primary" >SUBMIT</button>
+
+        </div>
+    }
+
+    <hr />
+    <br />
+
+
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+</html>

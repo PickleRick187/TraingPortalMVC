@@ -1,29 +1,28 @@
 ﻿using System;
-using System.Linq;
+using System.Data.Entity;
 using System.Net;
 using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using AutoMapper;
 using TrainingPortal.Models;
 using TrainingPortal.BLL.Interfaces;
 using TrainingPortal.BLL.Security;
-using TrainingPortal.DAL;
 using TrainingPortal.BLL;
+using TrainingPortal.BLL.Repositories;
+using TrainingPortal.DAL;
+using TrainingPortalDomain;
 
 
 namespace TrainingPortal.Controllers
 {
     public class AccountController : Controller
     {
-        private IStudentRepository _studentRepository;
-        private readonly IQueryStudentEmail _queryStudentEmail;
-
-       
+        private UnitOfWork _unitOfWork;
         public AccountController()
         {
-            this._studentRepository = new StudentRepository(new TrainingPortalEntities());
-            this._queryStudentEmail = new EfQueryStudentByEmail(new TrainingPortalEntities());
+            this._unitOfWork = new UnitOfWork(new TrainingPortalEntities());
         }
 
 
@@ -32,6 +31,7 @@ namespace TrainingPortal.Controllers
         [HttpGet]
         public ActionResult Signup()
         {
+
             return View();
         }
 
@@ -42,68 +42,68 @@ namespace TrainingPortal.Controllers
         [AllowAnonymous]
         [HttpPost]
         public ActionResult Signup([Bind(Exclude = "IsEmailVerified, ActivationCode")]
-            RegisterModel student)
+            RegisterModel registerModel)
         {
-
             bool Status = false;
             string message = "";
+
+
 
             //Model Validation
             if (ModelState.IsValid)
             {
                 #region Verify Email Exist
 
-                if (_studentRepository.CheckReg(student.StudentEmail))
+                if (_unitOfWork.Student.CheckReg(registerModel.StudentEmail))
                 {
                     ModelState.AddModelError("EmailExist", "Email Address already exist.");
-                    return View(student);
+                    return View(registerModel);
                 }
 
                 #endregion
 
+
                 #region Activation Code
 
-                
-                student.ActivationCode = Guid.NewGuid();
+                registerModel.ActivationCode = Guid.NewGuid();
 
                 #endregion
+
 
                 #region Password Hash
 
-                student.StudentPassword = Crypto.Hash(student.StudentPassword);
-                student.ConfirmPassword = Crypto.Hash(student.ConfirmPassword);
+                registerModel.StudentPassword = Crypto.Hash(registerModel.StudentPassword);
+                registerModel.ConfirmPassword = Crypto.Hash(registerModel.ConfirmPassword);
 
                 #endregion
 
-                student.IsEmailVerified = false;
+
+                registerModel.IsEmailVerified = false;
+
 
                 #region Save to database
 
+                Student learner = new Student();
 
-                Student learner = new Student()
-                {
-                    StudentEmail = student.StudentEmail,
-                    StudentPassword = student.StudentPassword,
-                    StudentFirstName = student.StudentFirstName,
-                    StudentLastName = student.StudentLastName,
-                    StudentID = student.StudentID
-                };
 
-    
-                _studentRepository.InsertStudent(learner);
-                    _studentRepository.Save();
+
+                var learn = AutoMapper.Mapper.Map(registerModel, learner);
+
+
+                _unitOfWork.Student.Add(learn);
+              _unitOfWork.Complete();
+
 
 
                 #endregion
 
                 #region Send Email
-                SendVerificationLinkEmail(student.StudentEmail, student.ActivationCode.ToString());
 
+                SendVerificationLinkEmail(registerModel.StudentEmail, registerModel.ActivationCode.ToString());
 
                 message = "Registration Successfully done. Account activation link " +
-                          " has been sent to your email id: " + student.StudentEmail;
+                          " has been sent to your email id: " + registerModel.StudentEmail;
                 Status = true;
-
 
             }
 
@@ -117,7 +117,7 @@ namespace TrainingPortal.Controllers
             ViewBag.Message = message;
             ViewBag.Status = Status;
 
-            return View(student);
+            return View(registerModel);
         }
         #endregion
 
@@ -134,12 +134,12 @@ namespace TrainingPortal.Controllers
         {
             bool Status = false;
 
-            var v = _studentRepository.VerifyEmail(id);
+            var v = _unitOfWork.Student.VerifyEmail(id);
                 if (v != null)
                 {
                     v.IsEmailVerified = true;
-                    _studentRepository.Save();
-
+                   
+                
                     return RedirectToAction("UserHome", "Portal", new { id = v.StudentEmail} );
                 }
                 else
@@ -170,15 +170,18 @@ namespace TrainingPortal.Controllers
         {
             string message = "";
 
-                var v = _studentRepository.CheckEmail(login.StudentEmail);
 
-                if ( v != null )
+
+            var v = _unitOfWork.Student.GetEmail(login.StudentEmail);
+
+                if ( v != null)
                 {
                     if (string.Compare(Crypto.Hash(login.StudentPassword), v.StudentPassword) == 0)
                     {
                         int timeout = login.RememberMe ? 525600 : 20;
                         var ticket = new FormsAuthenticationTicket(login.StudentEmail, login.RememberMe, timeout);
                         string encrypted = FormsAuthentication.Encrypt(ticket);
+                        
                         var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, encrypted)
                         {
                             Expires = DateTime.Now.AddMinutes(timeout),
@@ -194,8 +197,7 @@ namespace TrainingPortal.Controllers
                         else
                         {
 
-                            
-                            return RedirectToAction("UserHome", "Portal", new { id = v.StudentID});
+                        return RedirectToAction("UserHome", "Portal", new {id = v.StudentID});
                         }
                     }
                     else
@@ -208,7 +210,6 @@ namespace TrainingPortal.Controllers
                     message = "Invalid creditential provided.";
                 }
             
-
             ViewBag.Message = message;
             return View();
         }

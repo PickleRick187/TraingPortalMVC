@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TrainingPortal.BLL;
+﻿using System.Collections.Generic;
 using TrainingPortal.DAL;
 
 namespace TrainingPortal.BLL.Interfaces
 {
-    public interface ICourseRepository
+    public interface ICourseRepository : IRepository<Course>
     {
-        Course GetCourseByID(int id);
-        ICollection<Course> GetCourses();
+        IEnumerable<Course> GetTopSellingCourses(int Count);
+        IEnumerable<Course> GetPopularCourses(int pageIndex, int pageSize);
     }
 }

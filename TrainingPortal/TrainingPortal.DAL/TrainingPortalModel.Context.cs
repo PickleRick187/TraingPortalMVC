@@ -34,5 +34,7 @@ namespace TrainingPortal.DAL
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Training> Trainings { get; set; }
         public virtual DbSet<TrainingType> TrainingTypes { get; set; }
+
+        object placeHolderVariable;
     }
 }

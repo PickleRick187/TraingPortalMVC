@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using  TrainingPortal.BLL;
+﻿using Microsoft.Win32;
 using TrainingPortal.DAL;
 
 namespace TrainingPortal.BLL.Interfaces
 {
-    public interface IStudentRepository : IDisposable
-    {
-        IEnumerable<Student> GetStudents();
-        Student GetStudentByID(int studentID);
-        Student CheckEmail(string studentEmail);
-        void InsertStudent(Student student);
-        void DeleteStudent(int studentID);
-        void UpdateStudent(Student student);
-        void Save();
-        Student VerifyEmail(string id);
+    public interface IStudentRepository : IRepository<Student>
+    {        
+        //IEnumerable<T> GetStudents<T>();
         bool CheckReg(string EmailID);
+        Student GetEmail(string Email);
+        Student VerifyEmail(string id);
+        Student GetID(int id);
+
     }
 }
