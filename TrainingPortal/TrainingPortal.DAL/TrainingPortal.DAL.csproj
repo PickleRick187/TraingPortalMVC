@@ -51,78 +51,76 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Catalog.cs">
-      <DependentUpon>TrainingPortalModel.tt</DependentUpon>
+      <DependentUpon>TrainingPortalEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Course.cs">
-      <DependentUpon>TrainingPortalModel.tt</DependentUpon>
+      <DependentUpon>TrainingPortalEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Enrollment.cs">
-      <DependentUpon>TrainingPortalModel.tt</DependentUpon>
+      <DependentUpon>TrainingPortalEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Lecturer.cs">
-      <DependentUpon>TrainingPortalModel.tt</DependentUpon>
+      <DependentUpon>TrainingPortalEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="PaymentType.cs">
-      <DependentUpon>TrainingPortalModel.tt</DependentUpon>
+      <DependentUpon>TrainingPortalEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Student.cs">
-      <DependentUpon>TrainingPortalModel.tt</DependentUpon>
+      <DependentUpon>TrainingPortalEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="sysdiagram.cs">
-      <DependentUpon>TrainingPortalModel.tt</DependentUpon>
+      <DependentUpon>TrainingPortalEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Training.cs">
-      <DependentUpon>TrainingPortalModel.tt</DependentUpon>
+      <DependentUpon>TrainingPortalEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="TrainingPortalModel.Context.cs">
+    <Compile Include="TrainingPortalEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>TrainingPortalModel.Context.tt</DependentUpon>
+      <DependentUpon>TrainingPortalEntities.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="TrainingPortalModel.cs">
+    <Compile Include="TrainingPortalEntities.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>TrainingPortalModel.tt</DependentUpon>
+      <DependentUpon>TrainingPortalEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="TrainingPortalModel.Designer.cs">
+    <Compile Include="TrainingPortalEntities.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>TrainingPortalModel.edmx</DependentUpon>
+      <DependentUpon>TrainingPortalEntities.edmx</DependentUpon>
     </Compile>
     <Compile Include="TrainingType.cs">
-      <DependentUpon>TrainingPortalModel.tt</DependentUpon>
+      <DependentUpon>TrainingPortalEntities.tt</DependentUpon>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EntityDeploy Include="TrainingPortalModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>TrainingPortalModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config">
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
-    <None Include="TrainingPortalModel.edmx.diagram">
-      <DependentUpon>TrainingPortalModel.edmx</DependentUpon>
+    <EntityDeploy Include="TrainingPortalEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TrainingPortalEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="TrainingPortalEntities.edmx.diagram">
+      <DependentUpon>TrainingPortalEntities.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="TrainingPortalModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>TrainingPortalModel.Context.cs</LastGenOutput>
-      <DependentUpon>TrainingPortalModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="TrainingPortalModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TrainingPortalModel.edmx</DependentUpon>
-      <LastGenOutput>TrainingPortalModel.cs</LastGenOutput>
-    </Content>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Content Include="TrainingPortalEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TrainingPortalEntities.edmx</DependentUpon>
+      <LastGenOutput>TrainingPortalEntities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="TrainingPortalEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TrainingPortalEntities.edmx</DependentUpon>
+      <LastGenOutput>TrainingPortalEntities.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

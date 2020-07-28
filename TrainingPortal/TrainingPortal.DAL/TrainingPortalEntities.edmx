@@ -18,10 +18,10 @@
             <PropertyRef Name="CourseID" />
           </Key>
           <Property Name="CourseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CourseName" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="CourseDescription" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="CourseName" Type="varchar" MaxLength="30" />
+          <Property Name="CourseDescription" Type="varchar" MaxLength="300" />
           <Property Name="CoursePrice" Type="money" Nullable="false" />
-          <Property Name="CatalogID" Type="int" Nullable="false" />
+          <Property Name="CatalogID" Type="int" />
           <Property Name="PhotoFile" Type="binary" MaxLength="1150" />
           <Property Name="ImageMimeType" Type="varchar(max)" />
         </EntityType>
@@ -30,11 +30,11 @@
             <PropertyRef Name="EnrollmentID" />
           </Key>
           <Property Name="EnrollmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TimeStamp" Type="datetime" Nullable="false" />
-          <Property Name="CourseID" Type="int" Nullable="false" />
-          <Property Name="StudentID" Type="int" Nullable="false" />
-          <Property Name="PaymentTypeID" Type="int" Nullable="false" />
-          <Property Name="TrainingID" Type="int" Nullable="false" />
+          <Property Name="TimeStamp" Type="date" />
+          <Property Name="CourseID" Type="int" />
+          <Property Name="StudentID" Type="int" />
+          <Property Name="PaymentTypeID" Type="int" />
+          <Property Name="TrainingID" Type="int" />
         </EntityType>
         <EntityType Name="Lecturer">
           <Key>
@@ -93,7 +93,7 @@
           <Property Name="TrainingTypeName" Type="varchar" MaxLength="30" Nullable="false" />
         </EntityType>
         <Association Name="fk_catalogID">
-          <End Role="Catalog" Type="Self.Catalog" Multiplicity="1" />
+          <End Role="Catalog" Type="Self.Catalog" Multiplicity="0..1" />
           <End Role="Course" Type="Self.Course" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Catalog">
@@ -105,7 +105,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_courseID">
-          <End Role="Course" Type="Self.Course" Multiplicity="1" />
+          <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
           <End Role="Enrollment" Type="Self.Enrollment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Course">
@@ -129,7 +129,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_paymentTypeID">
-          <End Role="PaymentType" Type="Self.PaymentType" Multiplicity="1" />
+          <End Role="PaymentType" Type="Self.PaymentType" Multiplicity="0..1" />
           <End Role="Enrollment" Type="Self.Enrollment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PaymentType">
@@ -141,7 +141,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_studentID">
-          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
           <End Role="Enrollment" Type="Self.Enrollment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Student">
@@ -153,7 +153,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_TrainingID">
-          <End Role="Training" Type="Self.Training" Multiplicity="1" />
+          <End Role="Training" Type="Self.Training" Multiplicity="0..1" />
           <End Role="Enrollment" Type="Self.Enrollment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Training">
@@ -234,10 +234,10 @@
             <PropertyRef Name="CourseID" />
           </Key>
           <Property Name="CourseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CourseName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CourseDescription" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CourseName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CourseDescription" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
           <Property Name="CoursePrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="CatalogID" Type="Int32" Nullable="false" />
+          <Property Name="CatalogID" Type="Int32" />
           <Property Name="PhotoFile" Type="Binary" MaxLength="1150" FixedLength="true" />
           <Property Name="ImageMimeType" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Catalog" Relationship="Self.fk_catalogID" FromRole="Course" ToRole="Catalog" />
@@ -248,11 +248,11 @@
             <PropertyRef Name="EnrollmentID" />
           </Key>
           <Property Name="EnrollmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TimeStamp" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CourseID" Type="Int32" Nullable="false" />
-          <Property Name="StudentID" Type="Int32" Nullable="false" />
-          <Property Name="PaymentTypeID" Type="Int32" Nullable="false" />
-          <Property Name="TrainingID" Type="Int32" Nullable="false" />
+          <Property Name="TimeStamp" Type="DateTime" Precision="0" />
+          <Property Name="CourseID" Type="Int32" />
+          <Property Name="StudentID" Type="Int32" />
+          <Property Name="PaymentTypeID" Type="Int32" />
+          <Property Name="TrainingID" Type="Int32" />
           <NavigationProperty Name="Course" Relationship="Self.fk_courseID" FromRole="Enrollment" ToRole="Course" />
           <NavigationProperty Name="PaymentType" Relationship="Self.fk_paymentTypeID" FromRole="Enrollment" ToRole="PaymentType" />
           <NavigationProperty Name="Student" Relationship="Self.fk_studentID" FromRole="Enrollment" ToRole="Student" />
@@ -322,7 +322,7 @@
           <NavigationProperty Name="Trainings" Relationship="Self.fk_TrainingTypeID" FromRole="TrainingType" ToRole="Training" />
         </EntityType>
         <Association Name="fk_catalogID">
-          <End Role="Catalog" Type="Self.Catalog" Multiplicity="1" />
+          <End Role="Catalog" Type="Self.Catalog" Multiplicity="0..1" />
           <End Role="Course" Type="Self.Course" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Catalog">
@@ -334,7 +334,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_courseID">
-          <End Role="Course" Type="Self.Course" Multiplicity="1" />
+          <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
           <End Role="Enrollment" Type="Self.Enrollment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Course">
@@ -346,7 +346,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_paymentTypeID">
-          <End Role="PaymentType" Type="Self.PaymentType" Multiplicity="1" />
+          <End Role="PaymentType" Type="Self.PaymentType" Multiplicity="0..1" />
           <End Role="Enrollment" Type="Self.Enrollment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PaymentType">
@@ -358,7 +358,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_studentID">
-          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
           <End Role="Enrollment" Type="Self.Enrollment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Student">
@@ -370,7 +370,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_TrainingID">
-          <End Role="Training" Type="Self.Training" Multiplicity="1" />
+          <End Role="Training" Type="Self.Training" Multiplicity="0..1" />
           <End Role="Enrollment" Type="Self.Enrollment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Training">

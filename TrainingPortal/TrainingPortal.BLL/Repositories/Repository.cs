@@ -23,9 +23,6 @@ namespace TrainingPortal.BLL.Repositories
         }
 
 
-    
-        
-
         public IEnumerable<TEntity> GetAll()
         {
             return _context.Set<TEntity>().ToList();

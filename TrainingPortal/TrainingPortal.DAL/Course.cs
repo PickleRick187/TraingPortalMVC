@@ -24,7 +24,7 @@ namespace TrainingPortal.DAL
         public string CourseName { get; set; }
         public string CourseDescription { get; set; }
         public decimal CoursePrice { get; set; }
-        public int CatalogID { get; set; }
+        public Nullable<int> CatalogID { get; set; }
         public byte[] PhotoFile { get; set; }
         public string ImageMimeType { get; set; }
     

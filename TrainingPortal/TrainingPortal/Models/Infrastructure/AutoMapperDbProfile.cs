@@ -29,8 +29,16 @@ namespace TrainingPortal.Models.Infrastructure
             //Payment
             CreateMap<PaymentTypeView, PaymentType>();
             CreateMap<PaymentType, PaymentTypeView>();
+
+            CreateMap<StudentPortal, RegisterModel>();
+            CreateMap<RegisterModel, StudentPortal>();
+
+            //Enrollment
+            CreateMap<EnrollmentView, Enrollment>();
+            CreateMap<Enrollment, EnrollmentView>();
+
+
+
         }
-
-
     }
 }

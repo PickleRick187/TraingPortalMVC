@@ -67,6 +67,7 @@ namespace TrainingPortal.Controllers
                         //courseRepository.InsertCourse(courseDetail, image);
                         Course course = new Course
                         {
+                            CourseID = courseDetail.CourseID,
                             PhotoFile = new byte[image.ContentLength],
                             ImageMimeType = image.ContentType
                             

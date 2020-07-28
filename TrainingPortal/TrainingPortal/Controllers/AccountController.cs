@@ -31,7 +31,6 @@ namespace TrainingPortal.Controllers
         [HttpGet]
         public ActionResult Signup()
         {
-
             return View();
         }
 
@@ -46,7 +45,6 @@ namespace TrainingPortal.Controllers
         {
             bool Status = false;
             string message = "";
-
 
 
             //Model Validation
@@ -69,7 +67,6 @@ namespace TrainingPortal.Controllers
 
                 #endregion
 
-
                 #region Password Hash
 
                 registerModel.StudentPassword = Crypto.Hash(registerModel.StudentPassword);
@@ -77,23 +74,16 @@ namespace TrainingPortal.Controllers
 
                 #endregion
 
-
                 registerModel.IsEmailVerified = false;
-
 
                 #region Save to database
 
                 Student learner = new Student();
 
-
-
                 var learn = AutoMapper.Mapper.Map(registerModel, learner);
 
-
                 _unitOfWork.Student.Add(learn);
-              _unitOfWork.Complete();
-
-
+                _unitOfWork.Complete();
 
                 #endregion
 
@@ -171,23 +161,24 @@ namespace TrainingPortal.Controllers
             string message = "";
 
 
+            if (ModelState.IsValid)
+            {
+                var v = _unitOfWork.Student.GetEmail(login.StudentEmail);
 
-            var v = _unitOfWork.Student.GetEmail(login.StudentEmail);
-
-                if ( v != null)
+                if (v != null)
                 {
                     if (string.Compare(Crypto.Hash(login.StudentPassword), v.StudentPassword) == 0)
                     {
                         int timeout = login.RememberMe ? 525600 : 20;
                         var ticket = new FormsAuthenticationTicket(login.StudentEmail, login.RememberMe, timeout);
                         string encrypted = FormsAuthentication.Encrypt(ticket);
-                        
+
                         var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, encrypted)
                         {
                             Expires = DateTime.Now.AddMinutes(timeout),
                             HttpOnly = true
                         };
-                      
+
                         Response.Cookies.Add(cookie);
 
                         if (Url.IsLocalUrl(ReturnUrl))
@@ -196,8 +187,7 @@ namespace TrainingPortal.Controllers
                         }
                         else
                         {
-
-                        return RedirectToAction("UserHome", "Portal", new {id = v.StudentID});
+                            return RedirectToAction("UserHome", "Portal", new { id = v.StudentID });
                         }
                     }
                     else
@@ -209,10 +199,15 @@ namespace TrainingPortal.Controllers
                 {
                     message = "Invalid creditential provided.";
                 }
+
             
-            ViewBag.Message = message;
+                ViewBag.Message = message;
+                return View();
+            }
+
             return View();
         }
+       
 
         #endregion
 

@@ -21,15 +21,16 @@ namespace TrainingPortal.Controllers
 
         [HttpGet]
         [Authorize]
-        public ActionResult UserHome(int id)
+        public ActionResult Register(int id)
         {
             var queryStudent = _unitOfWork.Student.GetByID(id);
             if (queryStudent != null)
             {
             Portal portalStudent = new Portal();
             var auto = AutoMapper.Mapper.Map(queryStudent, portalStudent);
-
-            return View(auto);
+      
+            ViewBag.StudentName = queryStudent.StudentFirstName;
+                return View(auto);
             }
 
             return RedirectToAction("SignIn", "Account");

@@ -20,13 +20,14 @@ namespace TrainingPortal.BLL.Repositories
             Student = new StudentRepository(_context);
             Courses = new CourseRepository(_context);
             Payment = new PaymentRepository(_context);
+            Enrollment = new EnrollmentRepository(_context);
         }
 
 
         public ICourseRepository Courses { get; private set; }
         public IStudentRepository Student { get; private set; }
         public IPaymentRepository Payment { get; private set; }
-
+        public IEnrollmentRepository Enrollment { get; private set; }
 
         public int Complete()
         {

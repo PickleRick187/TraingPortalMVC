@@ -17,7 +17,7 @@ namespace TrainingPortal.Models
         public string CatalogName { get; set; }
         public string CatalogDescription { get; set; }
 
-
+        
         public virtual ICollection<CourseView> Courses { get; set; }
     }
 }

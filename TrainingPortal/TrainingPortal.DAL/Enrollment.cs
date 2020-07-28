@@ -15,11 +15,11 @@ namespace TrainingPortal.DAL
     public partial class Enrollment
     {
         public int EnrollmentID { get; set; }
-        public System.DateTime TimeStamp { get; set; }
-        public int CourseID { get; set; }
-        public int StudentID { get; set; }
-        public int PaymentTypeID { get; set; }
-        public int TrainingID { get; set; }
+        public Nullable<System.DateTime> TimeStamp { get; set; }
+        public Nullable<int> CourseID { get; set; }
+        public Nullable<int> StudentID { get; set; }
+        public Nullable<int> PaymentTypeID { get; set; }
+        public Nullable<int> TrainingID { get; set; }
     
         public virtual Course Course { get; set; }
         public virtual PaymentType PaymentType { get; set; }
